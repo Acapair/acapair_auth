@@ -1,9 +1,9 @@
 "use client";
 
 import * as z from "zod";
-import CardWrapper from "./card-wrapper";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginSchema } from "@/schemas";
 import {
   Form,
   FormControl,
@@ -13,8 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { LoginSchema } from "@/schemas";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import FormError from "@/components/errors/form-error";
+import CardWrapper from "@/components/auth/card-wrapper";
+import FormSuccess from "@/components/success/form-success";
+import { login } from "@/actions/login";
 
 const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -25,6 +28,10 @@ const LoginForm = () => {
     },
   });
 
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    login(values);
+  };
+
   return (
     <CardWrapper
       headerLabel="Tekrar Hoş Geldiniz!"
@@ -33,7 +40,7 @@ const LoginForm = () => {
       showSocial
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-6">
             <FormField
               control={form.control}
@@ -66,6 +73,8 @@ const LoginForm = () => {
               )}
             />
           </div>
+          <FormError message="" />
+          <FormSuccess message="" />
           <Button type="submit" className="w-full">
             Oturum Aç
           </Button>
