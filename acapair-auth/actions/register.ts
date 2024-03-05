@@ -3,6 +3,7 @@
 import * as z from "zod";
 import bcrypt from "bcrypt";
 import { RegisterSchema } from "@/schemas";
+import { createUser, getUserByEmail } from "@/data/user";
 import { db } from "@/lib/db";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
@@ -18,21 +19,15 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  const existingUser = await db.user.findUnique({
-    where: { email },
-  });
+  // Check if user exists
+  const existingUser = await getUserByEmail(email);
 
   if (existingUser) {
     return { error: "Bu e-posta adresi zaten kullanılıyor." };
   }
 
-  await db.user.create({
-    data: {
-      email,
-      password: hashedPassword,
-      name,
-    },
-  });
+  // Create user
+  await createUser(email, hashedPassword, name);
 
   // TODO: Send email verification
 
