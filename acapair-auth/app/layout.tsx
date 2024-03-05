@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { db } from "@/lib/db";
 import Image from "next/image";
 import Logo from "@/assets/pictures/navbar-logo.webp";
 
@@ -17,8 +16,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await db.user.findMany();
-
   return (
     <html lang="en">
       <body className={inter.className}>
