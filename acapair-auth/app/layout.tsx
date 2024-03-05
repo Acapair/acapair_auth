@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { db } from "@/lib/db";
+import Image from "next/image";
+import Logo from "@/assets/pictures/navbar-logo.webp";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav className="flex w-full shadow-lg fixed">
+          <Image src={Logo} alt="logo" width={180} height={180} />
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }

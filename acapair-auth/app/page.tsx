@@ -26,7 +26,11 @@ export default function Home() {
         </p>
         <div>
           <LoginButton>
-            <Button variant="secondary" size="lg">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="hover:bg-fuchsia-200"
+            >
               Oturum Aç
             </Button>
           </LoginButton>
