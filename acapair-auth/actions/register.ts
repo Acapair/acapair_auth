@@ -16,8 +16,8 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const { email, password, name } = validatedFields.data;
 
   // TODO - Pepper the password
-  //const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   // Check if user exists
   const existingUser = await getUserByEmail(email);
