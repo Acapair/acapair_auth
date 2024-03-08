@@ -20,6 +20,11 @@ import CardWrapper from "@/components/auth/card-wrapper";
 import FormSuccess from "@/components/success/form-success";
 import { login } from "@/actions/login";
 
+interface LoginResponse {
+  error: string;
+  success: string;
+}
+
 const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -39,8 +44,8 @@ const LoginForm = () => {
 
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        setError(data?.error);
+        setSuccess(data?.success);
       });
     });
   };

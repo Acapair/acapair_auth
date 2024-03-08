@@ -10,6 +10,10 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
+  pages: {
+    signIn: "/auth/login",
+    error: "/auth/error",
+  },
   callbacks: {
     async session({ token, session }) {
       // Token "sub" equals to user id
