@@ -22,7 +22,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           priority
         />
       </nav>
-      <div className="flex items-center">{children}</div>
+      <div className="flex items-center pt-3">{children}</div>
     </div>
   );
 };

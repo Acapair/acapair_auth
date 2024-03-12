@@ -40,6 +40,6 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   );
 
   return {
-    success: "Kayıt başarılı! E-posta adresinizi kontrol edin.",
+    success: "E-posta adresinizi kontrol edin. 😊",
   };
 };

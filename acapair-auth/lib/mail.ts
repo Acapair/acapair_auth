@@ -1,12 +1,12 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "mail.erciyes.edu.tr",
+  host: process.env.EMAIL_HOST,
   port: 587,
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "1030521090@erciyes.edu.tr",
-    pass: "Burak*1905",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -16,11 +16,11 @@ export const sendVertificationEmail = async (email: string, token: string) => {
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Acapair 🎓" <1030521090@erciyes.edu.tr>', // sender address
+    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`, // sender address
     to: email, // list of receivers
     subject: "Lütfen e-posta adresinizi doğrulayın", // Subject line
     text: "EPosta Doğrulama", // plain text body
-    html: `<p> Lütfen e-posta adresinizi<a href="${confirmLink}">doğrulayın</a></p>`, // html body
+    html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>.</p>`, // html body
   });
 
   console.log("Message sent: %s", info.messageId);
