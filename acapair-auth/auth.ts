@@ -15,6 +15,14 @@ export const {
     error: "/auth/error",
   },
   callbacks: {
+    async signIn({ user, account }) {
+      // @ts-ignore
+      const existingUser = await getUserById(user.id);
+
+      // If user is not verified, prevent sign in
+      if (!existingUser?.emailVerified) return false;
+      return true;
+    },
     async session({ token, session }) {
       // Token "sub" equals to user id
       if (token.sub && session.user) {

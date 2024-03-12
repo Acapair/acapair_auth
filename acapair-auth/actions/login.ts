@@ -7,6 +7,7 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
 import { generateVertificationToken } from "@/lib/tokens";
 import { getUserByEmail } from "@/data/user";
+import { sendVertificationEmail } from "@/lib/mail";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   // Validate fields
@@ -25,7 +26,13 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
   // If user's email is not verified, generate a new vertification token
   if (!existingUser?.emailVerified) {
-    await generateVertificationToken(existingUser.email);
+    const vertificationToken = await generateVertificationToken(
+      existingUser.email
+    );
+    await sendVertificationEmail(
+      vertificationToken.email,
+      vertificationToken.token
+    );
     return { success: "E-posta adresinizi kontrol edin!" };
   }
 

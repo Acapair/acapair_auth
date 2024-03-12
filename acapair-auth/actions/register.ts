@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import { RegisterSchema } from "@/schemas";
 import { createUser, getUserByEmail } from "@/data/user";
 import { generateVertificationToken } from "@/lib/tokens";
+import { sendVertificationEmail } from "@/lib/mail";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
@@ -32,7 +33,11 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   // Generate verification token
   const vertificationToken = await generateVertificationToken(email);
 
-  // TODO: Send email verification
+  // Send verification email
+  await sendVertificationEmail(
+    vertificationToken.email,
+    vertificationToken.token
+  );
 
   return {
     success: "Kayıt başarılı! E-posta adresinizi kontrol edin.",
