@@ -2,10 +2,7 @@
 
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
-import {
-  getVertificationTokenByEmail,
-  getVertificationTokenByToken,
-} from "@/data/verification-token";
+import { getVertificationTokenByToken } from "@/data/verification-token";
 
 interface VerificationToken {
   id: string;
