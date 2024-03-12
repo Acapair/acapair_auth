@@ -1,4 +1,4 @@
-import { getVertificationTokenByEmail } from "@/data/vertification-token";
+import { getVertificationTokenByEmail } from "@/data/verification-token";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "@/lib/db";
 

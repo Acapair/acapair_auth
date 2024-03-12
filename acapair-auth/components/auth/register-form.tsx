@@ -51,7 +51,6 @@ const RegisterForm = () => {
       headerLabel="Bir hesap oluşturun."
       backButtonLabel="Hesabınız var mı?"
       backButtonHref="/auth/login"
-      showSocial
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
