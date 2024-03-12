@@ -1,5 +1,11 @@
 import * as z from "zod";
 
+export const ResetSchema = z.object({
+  email: z.string().email({
+    message: "Lütfen geçerli bir e-posta adresi girin.",
+  }),
+});
+
 export const LoginSchema = z.object({
   email: z.string().email({
     message: "Lütfen geçerli bir e-posta adresi girin.",

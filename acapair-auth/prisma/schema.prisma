@@ -46,7 +46,18 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+// Verification token model
 model VertificationToken {
+  id        String @id @default(cuid())
+  email     String @unique
+  token     String @unique
+  expiresAt DateTime
+
+  @@unique([email, token])
+}
+
+// Password reset token model
+model PasswordResetToken{
   id        String @id @default(cuid())
   email     String @unique
   token     String @unique
