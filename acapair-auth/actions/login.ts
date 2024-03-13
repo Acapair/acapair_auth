@@ -45,12 +45,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     });
   } catch (error) {
     if (error instanceof AuthError) {
-      switch (error.message) {
-        case "CredentialsSignin":
-          return { error: "Kullanıcı adı veya şifre hatalı!" };
-        default:
-          return { error: "Bir hata oluştu!" };
-      }
+      return { error: "Kullanıcı adı veya şifre hatalı!" };
     }
     throw error;
   }

@@ -49,7 +49,7 @@ model Account {
 // Verification token model
 model VertificationToken {
   id        String @id @default(cuid())
-  email     String @unique
+  email     String 
   token     String @unique
   expiresAt DateTime
 
@@ -59,7 +59,7 @@ model VertificationToken {
 // Password reset token model
 model PasswordResetToken{
   id        String @id @default(cuid())
-  email     String @unique
+  email     String 
   token     String @unique
   expiresAt DateTime
 

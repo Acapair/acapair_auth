@@ -26,3 +26,9 @@ export const RegisterSchema = z.object({
     message: "Ad alanı boş bırakılamaz.",
   }),
 });
+
+export const NewPasswordSchema = z.object({
+  password: z.string().min(6, {
+    message: "Şifre alanı 6 karakterden uzun olmalıdır.",
+  }),
+});

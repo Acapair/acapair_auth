@@ -3,7 +3,7 @@ import Logo from "@/assets/pictures/navbar-logo.webp";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Acapair | Hoş geldiniz!",
+  title: "Acapair",
   description: "Educational Stream Platform Login Page",
 };
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
