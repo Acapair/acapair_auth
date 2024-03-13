@@ -32,7 +32,7 @@ export const NewVertificationForm = () => {
 
   useEffect(() => {
     onSubmit();
-  }, [onSubmit]);
+  });
 
   return (
     <CardWrapper
