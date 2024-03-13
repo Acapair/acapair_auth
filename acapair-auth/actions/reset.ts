@@ -3,6 +3,8 @@
 import * as z from "zod";
 import { ResetSchema } from "@/schemas";
 import { getUserByEmail } from "@/data/user";
+import { sendPasswordResetMail } from "@/lib/mail";
+import { generatePasswordResetToken } from "@/lib/tokens";
 
 export const reset = async (values: z.infer<typeof ResetSchema>) => {
   const validatedFields = ResetSchema.safeParse(values);
@@ -18,7 +20,10 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     return { error: "Kullanıcı bulunamadı." };
   }
 
+  const resetToken = await generatePasswordResetToken(email);
+  await sendPasswordResetMail(resetToken.email, resetToken.token);
+
   return {
-    success: "E-posta adresinize şifre sıfırlama bağlantısı gönderildi.",
+    success: "Şifre sıfırlama bağlantısı gönderildi. ✨",
   };
 };
