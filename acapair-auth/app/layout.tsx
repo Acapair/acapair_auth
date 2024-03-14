@@ -16,7 +16,11 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${inter.className} bg-gradient-to-r from-slate-500 to-slate-900`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
