@@ -1,3 +1,5 @@
+import { updateVertificationToken } from "@/data/verification-token";
+
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
@@ -21,7 +23,7 @@ export const sendVertificationEmail = async (email: string, token: string) => {
     html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>.</p>`,
   });
 
-  console.log("Message sent: %s", info.messageId);
+  await updateVertificationToken(token, info.messageId);
 };
 
 export const sendPasswordResetMail = async (email: string, token: string) => {

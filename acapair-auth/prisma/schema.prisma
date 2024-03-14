@@ -52,6 +52,8 @@ model VertificationToken {
   email     String 
   token     String @unique
   expiresAt DateTime
+  emailSentAt DateTime?
+  emailSentId String?
 
   @@unique([email, token])
 }
@@ -62,6 +64,8 @@ model PasswordResetToken{
   email     String 
   token     String @unique
   expiresAt DateTime
+  emailSentAt DateTime?
+  emailSentId String?
 
   @@unique([email, token])
 }
