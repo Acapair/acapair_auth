@@ -1,4 +1,5 @@
-import { updateVertificationToken } from "@/data/verification-token";
+import { updateResetTokenDateAndId } from "@/data/password-reset-token";
+import { updateVertificationTokenDateAndId } from "@/data/verification-token";
 
 const nodemailer = require("nodemailer");
 
@@ -23,7 +24,7 @@ export const sendVertificationEmail = async (email: string, token: string) => {
     html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>.</p>`,
   });
 
-  await updateVertificationToken(token, info.messageId);
+  await updateVertificationTokenDateAndId(token, info.messageId);
 };
 
 export const sendPasswordResetMail = async (email: string, token: string) => {
@@ -36,6 +37,5 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
     text: "şifre sıfırlama",
     html: `<p>Şifrenizi değiştirmek için <a href="${confirmLink}">tıklayınız</a>.</p>`,
   });
-
-  console.log("Message sent: %s", info.messageId);
+  await updateResetTokenDateAndId(token, info.messageId);
 };
