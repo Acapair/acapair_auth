@@ -21,7 +21,7 @@ export const sendVertificationEmail = async (email: string, token: string) => {
     to: email,
     subject: "Lütfen e-posta adresinizi doğrulayın",
     text: "EPosta Doğrulama",
-    html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>.</p>`,
+    html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>. ✅</p>`,
   });
 
   await updateVertificationTokenDateAndId(token, info.messageId);
@@ -35,7 +35,7 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
     to: email,
     subject: "Şifre Sıfırma Bağlantısı",
     text: "şifre sıfırlama",
-    html: `<p>Şifrenizi değiştirmek için <a href="${confirmLink}">tıklayınız</a>.</p>`,
+    html: `<p>Şifrenizi değiştirmek için <a href="${confirmLink}">tıklayınız</a>. 🔄</p>`,
   });
   await updateResetTokenDateAndId(token, info.messageId);
 };
