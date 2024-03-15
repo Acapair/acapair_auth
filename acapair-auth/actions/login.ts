@@ -68,6 +68,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
           where: { id: existingConfirmation.id },
         });
       }
+
       await db.twoFactorConfirmation.create({
         data: {
           userId: existingUser.id,

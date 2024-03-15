@@ -1,4 +1,5 @@
 import { updateResetTokenDateAndId } from "@/data/password-reset-token";
+import { updateTwoFactorTokenDateAndId } from "@/data/two-factor-token";
 import { updateVertificationTokenDateAndId } from "@/data/verification-token";
 
 const nodemailer = require("nodemailer");
@@ -48,5 +49,5 @@ export const sendTwoFactorMail = async (email: string, token: string) => {
     text: "doğrulama kodu",
     html: `<p>Doğrulama kodunuz: <b><u>${token}</u></b>. 🔐</p>`,
   });
-  await updateResetTokenDateAndId(token, info.messageId);
+  await updateTwoFactorTokenDateAndId(token, info.messageId);
 };

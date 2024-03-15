@@ -78,8 +78,8 @@ model TwoFactorToken{
   token     String @unique
   expiresAt DateTime
   emailSentAt DateTime?
-  emailSentId String?
-
+  messageId String?
+  
   @@unique([email, token])
 }
 

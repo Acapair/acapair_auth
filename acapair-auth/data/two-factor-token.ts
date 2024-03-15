@@ -25,3 +25,22 @@ export const getTwoFactorTokenByEmail = async (email: string) => {
     console.error(error);
   }
 };
+
+export const updateTwoFactorTokenDateAndId = async (
+  token: string,
+  messageId: string
+) => {
+  try {
+    await db.twoFactorToken.update({
+      where: {
+        token,
+      },
+      data: {
+        messageId,
+        emailSentAt: new Date(),
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
