@@ -21,6 +21,8 @@ model User {
   email     String @unique
   emailVerified DateTime?
   password  String?
+  isTwoFactorEnabled Boolean @default(false)
+  twoFactorConfirmation TwoFactorConfirmation?
   role UserRole @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -68,4 +70,23 @@ model PasswordResetToken{
   emailSentId String?
 
   @@unique([email, token])
+}
+
+model TwoFactorToken{
+  id        String @id @default(cuid())
+  email     String 
+  token     String @unique
+  expiresAt DateTime
+  emailSentAt DateTime?
+  emailSentId String?
+
+  @@unique([email, token])
+}
+
+model TwoFactorConfirmation{
+  id       String @id @default(cuid())
+  userId     String 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
 }

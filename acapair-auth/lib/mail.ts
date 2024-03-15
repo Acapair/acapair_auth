@@ -39,3 +39,14 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
   });
   await updateResetTokenDateAndId(token, info.messageId);
 };
+
+export const sendTwoFactorMail = async (email: string, token: string) => {
+  const info = await transporter.sendMail({
+    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: "Doğrulama kodu",
+    text: "doğrulama kodu",
+    html: `<p>Doğrulama kodunuz: <b><u>${token}</u></b>. 🔐</p>`,
+  });
+  await updateResetTokenDateAndId(token, info.messageId);
+};
