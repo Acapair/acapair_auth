@@ -26,6 +26,7 @@ export const {
       // If user is not verified, prevent sign in
       if (!existingUser?.emailVerified) return false;
 
+      //@ts-ignore
       if (existingUser?.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
           existingUser.id
@@ -46,6 +47,10 @@ export const {
         session.user.role = token.role;
       }
 
+      if (session.user) {
+        session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
+      }
+
       return session;
     },
     async jwt({ token }) {
@@ -53,6 +58,10 @@ export const {
       const existingUser = await getUserById(token.sub);
       if (!existingUser) return token;
       token.role = existingUser.role;
+
+      // @ts-ignore
+      token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
+
       return token;
     },
   },
