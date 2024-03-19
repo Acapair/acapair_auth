@@ -48,10 +48,10 @@ export const createUser = async (
 };
 
 // Get User
-export const getAllUsers = async (skip: number) => {
+export const getAllUsers = async (take: number) => {
   try {
     const users = await db.user.findMany({
-      take: 2,
+      take,
     });
     return users;
   } catch (error) {

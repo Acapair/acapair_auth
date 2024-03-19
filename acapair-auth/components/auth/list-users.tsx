@@ -15,9 +15,10 @@ const ListUser = ({ users }: ListUserProps) => {
           Kayıtlı Kullanıcıların Bilgileri
         </p>
       </CardHeader>
-      {users.map((user: any) => {
-        return <ListUserItem key={user.id} user={user} />;
-      })}
+      {Array.isArray(users) &&
+        users.map((user: any) => {
+          return <ListUserItem key={user.id} user={user} />;
+        })}
     </Card>
   );
 };
