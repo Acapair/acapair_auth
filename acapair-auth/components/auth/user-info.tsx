@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import { Badge } from "../ui/badge";
 
 interface UserInfoProps {
-  user?: ExtendedUser;
+  user?: any;
   label: string;
 }
 

@@ -26,6 +26,12 @@ const Navbar = () => {
         <Button asChild variant={pathname === "/admin" ? "default" : "outline"}>
           <Link href="/admin">Kullanıcılar</Link>
         </Button>
+        <Button
+          asChild
+          variant={pathname === "/admin/search" ? "default" : "outline"}
+        >
+          <Link href="/admin/search">Kullanıcı Ara</Link>
+        </Button>
       </div>
       <UserButton />
     </nav>

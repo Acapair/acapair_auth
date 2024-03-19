@@ -9,7 +9,7 @@ interface ListUserProps {
 
 const ListUser = ({ users }: ListUserProps) => {
   return (
-    <Card className="w-[600px] shadow-md">
+    <Card className="w-[680px] shadow-md">
       <CardHeader>
         <p className="text-2xl font-semibold text-center">
           Kayıtlı Kullanıcıların Bilgileri
