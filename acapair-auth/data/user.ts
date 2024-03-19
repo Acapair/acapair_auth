@@ -46,3 +46,27 @@ export const createUser = async (
     return null;
   }
 };
+
+// Get User
+export const getAllUsers = async (skip: number) => {
+  try {
+    const users = await db.user.findMany({
+      take: 2,
+    });
+    return users;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+// Delete user by id
+export const deleteUserById = async (id: string) => {
+  try {
+    await db.user.delete({
+      where: { id },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};

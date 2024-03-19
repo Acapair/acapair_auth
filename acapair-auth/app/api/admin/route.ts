@@ -1,6 +1,8 @@
+import { deleteUserById } from "@/data/user";
 import { currentRole } from "@/lib/auth";
 import { UserRole } from "@prisma/client";
 import { NextResponse } from "next/server";
+import type { NextApiRequest } from "next";
 
 export async function GET() {
   const role = await currentRole();

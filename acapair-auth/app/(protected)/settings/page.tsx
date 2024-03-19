@@ -1,11 +1,12 @@
-"use client";
+import ListUser from "@/components/auth/list-users";
+import { deleteUserById, getAllUsers } from "@/data/user";
 
-import { logout } from "@/actions/logout";
-import { useCurrentUser } from "@/hooks/use-current-user";
-
-const SettingsPage = () => {
-  const user = useCurrentUser();
-
+const SettingsPage = async () => {
+  const onDeleteClick = async () => {
+    // @ts-ignore
+    await deleteUserById(user?.id);
+  };
+  const users = await getAllUsers(5);
   return <div className="bg-white p-10 rounded-xl"></div>;
 };
 
