@@ -7,6 +7,7 @@ import { useEffect, useCallback, useState } from "react";
 import { newVerification } from "@/actions/new-vertification";
 import FormError from "@/components/errors/form-error";
 import FormSuccess from "@/components/success/form-success";
+import { Button } from "../ui/button";
 
 export const NewVertificationForm = () => {
   const [error, setError] = useState<string | undefined>();
@@ -29,21 +30,25 @@ export const NewVertificationForm = () => {
         setError("Bir hata oluştu!");
       });
   }, [token, success, error]);
-
-  useEffect(() => {
-    onSubmit();
-  });
-
   return (
     <CardWrapper
       headerLabel="Lütfen hesabınızı doğrulayın"
       backButtonLabel="Geri dön"
       backButtonHref="/auth/login"
     >
-      <div className="flex items-center w-full justify-center">
-        {!error && !success && <BeatLoader color="#10B981" />}
+      <div className="flex items-center w-full justify-center pb-5">
         <FormSuccess message={success} />
-        {!success && <FormError message={error} />}
+        <FormError message={error} />
+      </div>
+      <div className="flex justify-center">
+        <Button
+          variant={"outline"}
+          size="lg"
+          onClick={onSubmit}
+          disabled={!!error || !!success}
+        >
+          E-postanızı doğrulayın
+        </Button>
       </div>
     </CardWrapper>
   );

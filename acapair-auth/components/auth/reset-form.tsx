@@ -71,6 +71,7 @@ const ResetForm = () => {
                       disabled={isPending}
                       placeholder="john.doe@example.com"
                       type="email"
+                      autoComplete="email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -81,7 +82,7 @@ const ResetForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            Send reset email
+            Yenileme bağlantısı gönder
           </Button>
         </form>
       </Form>

@@ -21,3 +21,18 @@ export const getPasswordResetTokenByEmail = async (email: string) => {
     return { error: "Bir hata oluştu." };
   }
 };
+
+export const updateResetTokenDateAndId = async (token: string, id: string) => {
+  try {
+    const passwordResetToken = await db.passwordResetToken.update({
+      where: { token },
+      data: {
+        emailSentId: id,
+        emailSentAt: new Date(),
+      },
+    });
+    return passwordResetToken;
+  } catch (error) {
+    return error;
+  }
+};

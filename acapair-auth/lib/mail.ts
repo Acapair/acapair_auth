@@ -1,3 +1,7 @@
+import { updateResetTokenDateAndId } from "@/data/password-reset-token";
+import { updateTwoFactorTokenDateAndId } from "@/data/two-factor-token";
+import { updateVertificationTokenDateAndId } from "@/data/verification-token";
+
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
@@ -18,10 +22,10 @@ export const sendVertificationEmail = async (email: string, token: string) => {
     to: email,
     subject: "Lütfen e-posta adresinizi doğrulayın",
     text: "EPosta Doğrulama",
-    html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>.</p>`,
+    html: `<p> Lütfen e-posta adresinizi <a href="${confirmLink}">doğrulayın</a>. ✅</p>`,
   });
 
-  console.log("Message sent: %s", info.messageId);
+  await updateVertificationTokenDateAndId(token, info.messageId);
 };
 
 export const sendPasswordResetMail = async (email: string, token: string) => {
@@ -32,8 +36,18 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
     to: email,
     subject: "Şifre Sıfırma Bağlantısı",
     text: "şifre sıfırlama",
-    html: `<p>Şifrenizi değiştirmek için <a href="${confirmLink}">tıklayınız</a>.</p>`,
+    html: `<p>Şifrenizi değiştirmek için <a href="${confirmLink}">tıklayınız</a>. 🔄</p>`,
   });
+  await updateResetTokenDateAndId(token, info.messageId);
+};
 
-  console.log("Message sent: %s", info.messageId);
+export const sendTwoFactorMail = async (email: string, token: string) => {
+  const info = await transporter.sendMail({
+    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: "Doğrulama kodu",
+    text: "doğrulama kodu",
+    html: `<p>Doğrulama kodunuz: <b><u>${token}</u></b>. 🔐</p>`,
+  });
+  await updateTwoFactorTokenDateAndId(token, info.messageId);
 };

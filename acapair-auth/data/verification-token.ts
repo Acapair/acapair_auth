@@ -23,3 +23,22 @@ export const getVertificationTokenByToken = async (token: string) => {
     return error;
   }
 };
+
+// Mail sent date and mail id update
+export const updateVertificationTokenDateAndId = async (
+  token: string,
+  id: string
+) => {
+  try {
+    const vertificationToken = await db.vertificationToken.update({
+      where: { token },
+      data: {
+        emailSentId: id,
+        emailSentAt: new Date(),
+      },
+    });
+    return vertificationToken;
+  } catch (error) {
+    return error;
+  }
+};
