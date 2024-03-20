@@ -40,8 +40,8 @@ export const Search = () => {
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Search"
-        className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+        placeholder="Arama yapın..."
+        className="border border-slate-500 rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 bg-[#252731]"
       />
       {value && (
         <X
@@ -51,11 +51,10 @@ export const Search = () => {
       )}
       <Button
         type="submit"
-        size="sm"
-        variant="secondary"
-        className="rounded-l-none"
+        size="icon"
+        className="rounded-l-none bg-[#252731] hover:bg-[#3a3d4a]"
       >
-        <SearchIcon className="w-5 text-muted-foreground" />
+        <SearchIcon className="h-5 w-5 text-muted-foreground" />
       </Button>
     </form>
   );

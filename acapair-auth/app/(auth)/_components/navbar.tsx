@@ -17,6 +17,12 @@ const Navbar = () => {
           asChild
           variant={pathname === "/settings" ? "default" : "outline"}
         >
+          <Link href="/home">Ana Sayfa</Link>
+        </Button>
+        <Button
+          asChild
+          variant={pathname === "/settings" ? "default" : "outline"}
+        >
           <Link href="/settings">Ayarlar</Link>
         </Button>
         <Button
