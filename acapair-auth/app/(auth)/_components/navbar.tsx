@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@/components/auth/user-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import NavbarApp from "@/components/auth/navbar-app";
 
 const Navbar = () => {
   const pathname = usePathname();
