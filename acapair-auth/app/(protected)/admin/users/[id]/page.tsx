@@ -3,7 +3,6 @@ import UserInfo from "@/components/auth/user-info";
 import { Button } from "@/components/ui/button";
 import { deleteUserById, getUserById } from "@/data/user";
 import { currentRole } from "@/lib/auth";
-import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 
 export default async function UserPage({
