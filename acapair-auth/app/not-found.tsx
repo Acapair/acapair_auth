@@ -1,4 +1,4 @@
-import Navbar from "@/components/auth/navbar";
+import Navbar from "@/components/auth/navbar-app";
 import Link from "next/link";
 import { GoAlertFill } from "react-icons/go";
 

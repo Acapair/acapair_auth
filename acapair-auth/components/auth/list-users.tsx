@@ -11,9 +11,9 @@ const ListUser = ({ users }: ListUserProps) => {
   return (
     <Card className="w-[680px] shadow-md">
       <CardHeader>
-        <p className="text-2xl font-semibold text-center">
-          Kayıtlı Kullanıcıların Bilgileri
-        </p>
+        <h1 className="text-center mb-5 text-bold text-xl shadow-sm p-3 text-slate-700">
+          🌐 Kayıtlı Kullanıcıların Bilgileri
+        </h1>
       </CardHeader>
       {Array.isArray(users) &&
         users.map((user: any) => {

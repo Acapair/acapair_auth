@@ -1,6 +1,9 @@
-import { ExtendedUser } from "@/next-auth";
+"use client";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { deleteUserById } from "@/data/user";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface UserInfoProps {
   user?: any;
@@ -8,10 +11,18 @@ interface UserInfoProps {
 }
 
 const UserInfo = ({ user, label }: UserInfoProps) => {
+  const handleClick = () => {
+    deleteUserById(user?.id);
+  };
+
+  const currentUser = useCurrentUser();
+
   return (
     <Card className="w-[680px] shadow-md">
       <CardHeader>
-        <p className="text-2xl font-semibold text-center">{label}</p>
+        <h1 className="text-center mb-5 text-bold text-xl shadow-sm pb-1 text-slate-700">
+          {label}{" "}
+        </h1>
       </CardHeader>
       <CardContent>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 mb-2 shadow-lg">
@@ -44,6 +55,27 @@ const UserInfo = ({ user, label }: UserInfoProps) => {
             {user?.isTwoFactorEnabled ? "Açık" : "Kapalı"}
           </Badge>
         </div>
+        {currentUser?.role === "ADMIN" &&
+          (user?.role === "ADMIN" ? (
+            <p className="text-sm text-center pt-3">
+              Yönetici hesapları silinemez.
+            </p>
+          ) : (
+            <Button
+              variant="danger"
+              className="w-full mt-10"
+              onClick={handleClick}
+            >
+              Kullanıcıyı Sil
+            </Button>
+          ))}
+        {currentUser?.role === "USER" && (
+          <p className="text-sm text-center pt-3">
+            Hesabınızın silinmesi için{" "}
+            <span className="text-blue-500">test@mail.com</span> ile iletişime
+            geçin.
+          </p>
+        )}
       </CardContent>
     </Card>
   );

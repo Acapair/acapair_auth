@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@/components/auth/user-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import NavbarApp from "@/components/auth/navbar-app";
 
 const Navbar = () => {
   const pathname = usePathname();
   const currentUser = useCurrentUser();
 
   return (
-    <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[680px] shadow-sm mb-3">
+    <div className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[680px] shadow-sm mb-3">
       <div className="flex gap-x-2">
         <Button
           asChild
@@ -45,7 +46,7 @@ const Navbar = () => {
         )}
       </div>
       <UserButton />
-    </nav>
+    </div>
   );
 };
 

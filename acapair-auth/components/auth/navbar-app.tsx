@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/assets/pictures/navbar-logo.webp";
 
-const Navbar = () => {
+const NavbarApp = () => {
   return (
     <nav className="flex w-full shadow-lg fixed space-x-1">
       <Link href="/">
@@ -23,4 +23,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarApp;

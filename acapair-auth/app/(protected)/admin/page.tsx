@@ -1,6 +1,5 @@
 import ListUser from "@/components/auth/list-users";
 import { getAllUsers } from "@/data/user";
-import { useCurrentRole } from "@/hooks/use-current-role";
 import { currentRole } from "@/lib/auth";
 
 const AdminPage = async () => {

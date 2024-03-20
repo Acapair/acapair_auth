@@ -3,7 +3,6 @@ import { searchUser } from "@/actions/search";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useTransition } from "react";
-import UserInfo from "./user-info";
 import ListUserItem from "./list-user-item";
 
 const SearchBar = () => {
@@ -28,7 +27,7 @@ const SearchBar = () => {
   return (
     <div className="flex flex-col">
       <h1 className="text-center mb-5 text-bold text-xl shadow-sm p-3 text-slate-700">
-        Kullanıcı Ara
+        🔎 Kullanıcı Ara
       </h1>
       <div className="flex items-center space-x-2 mb-5 justify-center">
         <Input
