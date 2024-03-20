@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@/components/auth/user-button";
-import { toast } from "sonner";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const currentUser = useCurrentUser();
 
   return (
     <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[680px] shadow-sm mb-3">
@@ -24,15 +25,24 @@ const Navbar = () => {
         >
           <Link href="/client">Bilgilerim</Link>
         </Button>
-        <Button asChild variant={pathname === "/admin" ? "default" : "outline"}>
-          <Link href="/admin">Kullanıcılar</Link>
-        </Button>
-        <Button
-          asChild
-          variant={pathname === "/admin/search" ? "default" : "outline"}
-        >
-          <Link href="/admin/search">Kullanıcı Ara</Link>
-        </Button>
+        {currentUser?.role === "ADMIN" ? (
+          <>
+            <Button
+              asChild
+              variant={pathname === "/admin" ? "default" : "outline"}
+            >
+              <Link href="/admin">Kullanıcılar</Link>
+            </Button>
+            <Button
+              asChild
+              variant={pathname === "/admin/search" ? "default" : "outline"}
+            >
+              <Link href="/admin/search">Kullanıcı Ara</Link>
+            </Button>
+          </>
+        ) : (
+          ""
+        )}
       </div>
       <UserButton />
     </nav>
