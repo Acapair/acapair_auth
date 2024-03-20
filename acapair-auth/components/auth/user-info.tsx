@@ -1,8 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { deleteUserById } from "@/data/user";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface UserInfoProps {
@@ -11,10 +9,6 @@ interface UserInfoProps {
 }
 
 const UserInfo = ({ user, label }: UserInfoProps) => {
-  const handleClick = () => {
-    deleteUserById(user?.id);
-  };
-
   const currentUser = useCurrentUser();
 
   return (
@@ -55,27 +49,6 @@ const UserInfo = ({ user, label }: UserInfoProps) => {
             {user?.isTwoFactorEnabled ? "Açık" : "Kapalı"}
           </Badge>
         </div>
-        {currentUser?.role === "ADMIN" &&
-          (user?.role === "ADMIN" ? (
-            <p className="text-sm text-center pt-3">
-              Yönetici hesapları silinemez.
-            </p>
-          ) : (
-            <Button
-              variant="danger"
-              className="w-full mt-10"
-              onClick={handleClick}
-            >
-              Kullanıcıyı Sil
-            </Button>
-          ))}
-        {currentUser?.role === "USER" && (
-          <p className="text-sm text-center pt-3">
-            Hesabınızın silinmesi için{" "}
-            <span className="text-blue-500">test@mail.com</span> ile iletişime
-            geçin.
-          </p>
-        )}
       </CardContent>
     </Card>
   );

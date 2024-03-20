@@ -45,7 +45,7 @@ const SearchBar = () => {
         {user ? (
           <ListUserItem user={user} />
         ) : (
-          <p className="text-center">Kullanıcı bulunamadı.</p>
+          <p className="text-center">Kullanıcı Bulunamadı.</p>
         )}
       </div>
     </div>

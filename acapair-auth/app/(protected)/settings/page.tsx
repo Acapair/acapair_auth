@@ -154,7 +154,18 @@ const SettingsPage = () => {
                     <div className="space-y-0.5">
                       <FormLabel>2 Faktörlü Kimlik Doğrulama</FormLabel>
                       <FormDescription>
-                        {"Kimlik Doğrulama'yı etkinleştirin"}
+                        {user?.isTwoFactorEnabled && (
+                          <p>
+                            Kimlik doğrulamayı{" "}
+                            <span className="text-red-600">kapatın.</span>
+                          </p>
+                        )}
+                        {!user?.isTwoFactorEnabled && (
+                          <p>
+                            Kimlik doğrulamayı{" "}
+                            <span className="text-green-600">açın.</span>
+                          </p>
+                        )}
                       </FormDescription>
                     </div>
                     <FormControl>
