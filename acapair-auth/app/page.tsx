@@ -2,7 +2,8 @@ import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import { LoginButton } from "@/components/auth/login-button";
+
+import Link from "next/link";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -22,15 +23,13 @@ export default function Home() {
           Kimlik Doğrulama ve Yönetim Uygulaması
         </h1>
         <div>
-          <LoginButton>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="hover:bg-orange-200 ease-in-out transition-all duration-300"
-            >
-              Giriş Yap
-            </Button>
-          </LoginButton>
+          <Button
+            variant="secondary"
+            size="lg"
+            className="hover:bg-orange-200 ease-in-out transition-all duration-300"
+          >
+            <Link href="/auth/login">Giriş Yap</Link>
+          </Button>
         </div>
       </div>
     </main>

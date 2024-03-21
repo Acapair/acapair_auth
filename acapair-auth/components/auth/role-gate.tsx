@@ -12,7 +12,9 @@ interface RoleGateProps {
 const RoleGate = ({ children, allowedRole }: RoleGateProps) => {
   const role = useCurrentRole();
   if (role !== allowedRole) {
-    return <FormError message="Yetkiniz bulunmamaktadır." />;
+    return (
+      <FormError message="Bu sayfaya erişmek için yeterli yetkiniz bulunmamaktadır." />
+    );
   }
   return <>{children}</>;
 };

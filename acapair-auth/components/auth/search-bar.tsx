@@ -32,7 +32,7 @@ const SearchBar = () => {
       <div className="flex items-center space-x-2 mb-5 justify-center">
         <Input
           type="email"
-          placeholder="Kullanıcı ara (e-posta giriniz.)"
+          placeholder="e-posta ile kullanıcı ara"
           onChange={onTextChange}
           value={search}
           className="w-96 p-2 rounded-md border-2 border-slate-300 shadow-md focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent transition-all ease-in-out duration-200"

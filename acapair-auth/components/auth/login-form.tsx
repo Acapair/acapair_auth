@@ -21,11 +21,6 @@ import FormSuccess from "@/components/success/form-success";
 import { login } from "@/actions/login";
 import Link from "next/link";
 
-interface LoginResponse {
-  error: string;
-  success: string;
-}
-
 const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
