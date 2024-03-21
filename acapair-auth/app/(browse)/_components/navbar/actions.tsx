@@ -9,21 +9,23 @@ export const Actions = async () => {
   const user = await currentUser();
 
   return (
-    <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
+    <div className="ml-4 mr-5 flex items-center justify-end gap-x-5 lg:ml-0">
       {!!user && (
-        <div className="flex items-center gap-x-4 pr-5 justify-center">
+        <div className="flex items-center justify-center gap-x-4">
           <Button
             size="sm"
             variant="ghost"
-            className="text-muted-foreground hover:text-primary"
+            className="text-muted-foreground hover:text-slate-900"
             asChild
           >
             <Link href={`/u/${user.id}`}>
               <Clapperboard className="h-5 w-5 lg:mr-3" />
-              <span className="hidden lg:block">Kontrol Paneli</span>
+              <span className="text-md hidden lg:block">Kontrol Paneli</span>
             </Link>
           </Button>
-          <UserButton />
+          <div className="pl-1">
+            <UserButton />
+          </div>
         </div>
       )}
     </div>

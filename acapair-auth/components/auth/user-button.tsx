@@ -29,20 +29,18 @@ export const UserButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-30" align="end">
-        <DropdownMenuItem className="bg-slate-700 text-white">
-          {user?.name}
-        </DropdownMenuItem>
+        <DropdownMenuItem className="pt-3">{user?.name}</DropdownMenuItem>
         <DropdownMenuItem className="pt-3">
           <Link href="/settings">
-            <div className="flex justify-center items-center ">
-              <Settings className="h-4 w-4 mr-2" />
+            <div className="flex items-center justify-center ">
+              <Settings className="mr-2 h-4 w-4" />
               <p>Ayarlar</p>
             </div>
           </Link>
         </DropdownMenuItem>
         <LogoutButton>
           <DropdownMenuItem className="pt-3">
-            <ExitIcon className="h-4 w-4 mr-2" />
+            <ExitIcon className="mr-2 h-4 w-4" />
             Çıkış Yap
           </DropdownMenuItem>
         </LogoutButton>
