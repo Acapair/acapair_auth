@@ -11,12 +11,9 @@ const Navbar = () => {
   const currentUser = useCurrentUser();
 
   return (
-    <div className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[680px] shadow-sm mb-3">
+    <div className="mb-3 flex w-[680px] items-center justify-between rounded-xl bg-secondary p-4 shadow-sm">
       <div className="flex gap-x-2">
-        <Button
-          asChild
-          variant={pathname === "/settings" ? "default" : "outline"}
-        >
+        <Button asChild variant={pathname === "/home" ? "default" : "outline"}>
           <Link href="/home">Ana Sayfa</Link>
         </Button>
         <Button
