@@ -11,27 +11,24 @@ const font = Poppins({
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-gradient-to-r from-slate-500 to-slate-900">
+    <main className="flex h-full flex-col items-center justify-center bg-gradient-to-r from-orange-500 to-orange-800">
       <div className="space-y-6 text-center">
         <h1
           className={cn(
-            "text-6xl font-semibold text-white drop-shadow-md",
+            "text-2xl font-semibold text-white drop-shadow-md",
             font.className
           )}
         >
-          🎓 Acapair
+          Kimlik Doğrulama ve Yönetim Uygulaması
         </h1>
-        <p className="text-white text-lg">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </p>
         <div>
           <LoginButton>
             <Button
               variant="secondary"
               size="lg"
-              className="hover:bg-fuchsia-200"
+              className="hover:bg-orange-200 ease-in-out transition-all duration-300"
             >
-              Oturum Aç
+              Giriş Yap
             </Button>
           </LoginButton>
         </div>

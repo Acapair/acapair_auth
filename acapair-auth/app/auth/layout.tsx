@@ -1,4 +1,3 @@
-import NavbarApp from "@/components/auth/navbar-app";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,8 +6,7 @@ export const metadata: Metadata = {
 };
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-full flex justify-center bg-gradient-to-r from-slate-500 to-slate-900">
-      <NavbarApp />
+    <div className="h-full flex justify-center bg-gradient-to-r from-orange-500 to-orange-800">
       <div className="flex items-center pt-3">{children}</div>
     </div>
   );

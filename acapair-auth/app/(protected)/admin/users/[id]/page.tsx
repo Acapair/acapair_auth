@@ -30,23 +30,6 @@ export default async function UserPage({
         //@ts-ignore
         <div>
           <UserInfo user={user} label={"Kullanıcı Bilgisi"} />
-          <div className="w-[680px] mt-3">
-            <h1 className="text-red-200 text-semibold text-lg shadow-sm p-1">
-              Tehlikeli Alan
-            </h1>
-            <div className="border border-red-600 rounded-xl  p-1">
-              {role === "ADMIN" &&
-                (user?.role === "ADMIN" ? (
-                  <p className="text-sm text-center text-white">
-                    Yönetici hesapları silinemez.
-                  </p>
-                ) : (
-                  <Button variant="danger" className="w-full">
-                    Kullanıcıyı Sil
-                  </Button>
-                ))}
-            </div>
-          </div>
         </div>
       ) : (
         "Kullanıcı bulunamadı"

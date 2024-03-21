@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import BackButton from "./back-button";
-import Header from "./header";
 
 interface CardWrapperProps {
   children: React.ReactNode;
@@ -20,7 +19,9 @@ const CardWrapper = ({
   return (
     <Card className="w-[400px] shadow-md">
       <CardHeader>
-        <Header label={headerLabel} />
+        <p className="text-muted-foreground text-sm text-center">
+          {headerLabel}
+        </p>
       </CardHeader>
       <CardContent>{children}</CardContent>
       <CardFooter>

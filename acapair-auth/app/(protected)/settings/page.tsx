@@ -64,7 +64,7 @@ const SettingsPage = () => {
   return (
     <Card className="w-[680px]">
       <CardHeader>
-        <h1 className="text-center mb-5 text-bold text-xl shadow-sm p-3 text-slate-700">
+        <h1 className="text-center text-bold text-xl shadow-sm p-3 text-slate-700">
           ⚙️ Ayarlar
         </h1>
       </CardHeader>

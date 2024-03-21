@@ -105,7 +105,7 @@ const LoginForm = () => {
                         <Input
                           {...field}
                           disabled={isPending}
-                          placeholder="john.doe@example.com"
+                          placeholder="mail@example.com"
                           type="email"
                           autoComplete="email"
                         />
