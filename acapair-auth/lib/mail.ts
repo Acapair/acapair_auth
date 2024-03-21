@@ -18,7 +18,7 @@ export const sendVertificationEmail = async (email: string, token: string) => {
   const confirmLink = `http://localhost:3000/auth/new-vertification?token=${token}`;
 
   const info = await transporter.sendMail({
-    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
+    from: `"Kimlik Doğrulama ve Yönetim Uygulaması" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Lütfen e-posta adresinizi doğrulayın",
     text: "EPosta Doğrulama",
@@ -32,7 +32,7 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
   const confirmLink = `http://localhost:3000/auth/new-password?token=${token}`;
 
   const info = await transporter.sendMail({
-    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
+    from: `"Kimlik Doğrulama ve Yönetim Uygulaması" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Şifre Sıfırma Bağlantısı",
     text: "şifre sıfırlama",
@@ -43,7 +43,7 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
 
 export const sendTwoFactorMail = async (email: string, token: string) => {
   const info = await transporter.sendMail({
-    from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
+    from: `"Kimlik Doğrulama ve Yönetim Uygulaması" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Doğrulama kodu",
     text: "doğrulama kodu",
