@@ -1,9 +1,7 @@
 "use server";
 import UserInfo from "@/components/auth/user-info";
-import { Button } from "@/components/ui/button";
-import { deleteUserById, getUserById } from "@/data/user";
+import { getUserById } from "@/data/user";
 import { currentRole } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 export default async function UserPage({
   params,
@@ -17,12 +15,6 @@ export default async function UserPage({
     );
   }
   const user = await getUserById(params.id);
-
-  const handleClick = async () => {
-    //@ts-ignore
-    await deleteUserById(id);
-    redirect("/admin");
-  };
 
   return (
     <div>
