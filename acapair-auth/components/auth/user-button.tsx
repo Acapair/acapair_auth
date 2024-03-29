@@ -29,7 +29,9 @@ export const UserButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-30" align="end">
-        <DropdownMenuItem className="pt-3">{user?.name}</DropdownMenuItem>
+        <DropdownMenuItem className="pt-3">
+          <Link href="/client">{user?.name}</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem className="pt-3">
           <Link href="/settings">
             <div className="flex items-center justify-center ">
