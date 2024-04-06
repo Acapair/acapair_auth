@@ -30,7 +30,7 @@ export const getUserById = async (id: string) => {
 export const createUser = async (
   email: string,
   password: string,
-  name: string
+  name: string,
 ) => {
   try {
     const user = await db.user.create({
