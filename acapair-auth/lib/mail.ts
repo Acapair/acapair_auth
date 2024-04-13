@@ -16,6 +16,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendVertificationEmail = async (email: string, token: string) => {
   const confirmLink = `http://localhost:3000/auth/new-vertification?token=${token}`;
+  console.log("confirmLink", confirmLink);
 
   const info = await transporter.sendMail({
     from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
