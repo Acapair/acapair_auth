@@ -3,6 +3,7 @@
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 import { getVertificationTokenByToken } from "@/data/verification-token";
+import axios from "axios";
 
 interface VerificationToken {
   id: string;
@@ -13,7 +14,7 @@ interface VerificationToken {
 
 export const newVerification = async (token: string) => {
   const existingToken = (await getVertificationTokenByToken(
-    token
+    token,
   )) as VerificationToken;
   if (!existingToken) {
     return { error: "Geçersiz token!" };
@@ -34,5 +35,6 @@ export const newVerification = async (token: string) => {
     where: { id: existingToken.id },
   });
 
+  axios.get(`https://tahinli.com.tr:3434/create/${existingToken.email}`);
   return { success: "E-posta adresiniz doğrulandı!" };
 };

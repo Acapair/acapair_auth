@@ -11,17 +11,17 @@ const font = Poppins({
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-gradient-to-r from-slate-500 to-slate-900">
+    <main className="flex h-full flex-col items-center justify-center bg-[#242731]">
       <div className="space-y-6 text-center">
         <h1
           className={cn(
             "text-6xl font-semibold text-white drop-shadow-md",
-            font.className
+            font.className,
           )}
         >
           🎓 Acapair
         </h1>
-        <p className="text-white text-lg">
+        <p className="text-lg text-white">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         </p>
         <div>

@@ -26,16 +26,16 @@ const SearchBar = () => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="text-center mb-5 text-bold text-xl shadow-sm p-3 text-slate-700">
+      <h1 className="text-bold mb-1 p-3 text-center text-xl text-slate-700 shadow-sm">
         🔎 Kullanıcı Ara
       </h1>
-      <div className="flex items-center space-x-2 mb-5 justify-center">
+      <div className="mb-5 flex items-center justify-center space-x-2">
         <Input
           type="email"
           placeholder="Kullanıcı ara (e-posta giriniz.)"
           onChange={onTextChange}
           value={search}
-          className="w-96 p-2 rounded-md border-2 border-slate-300 shadow-md focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent transition-all ease-in-out duration-200"
+          className="w-96 rounded-md border-2 border-slate-300 p-2 shadow-md transition-all duration-200 ease-in-out focus:border-transparent focus:outline-none focus:ring-2 focus:ring-slate-300"
         />
         <Button type="submit" onClick={handleClick} disabled={isPending}>
           Ara

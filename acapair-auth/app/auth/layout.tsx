@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-full flex justify-center bg-gradient-to-r from-slate-500 to-slate-900">
+    <div className="flex h-full justify-center  bg-[#242731]">
       <NavbarApp />
       <div className="flex items-center pt-3">{children}</div>
     </div>

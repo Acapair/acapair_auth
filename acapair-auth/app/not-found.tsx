@@ -4,13 +4,13 @@ import { GoAlertFill } from "react-icons/go";
 
 const NotFound = () => {
   return (
-    <div className="flex-row justify-center items-center h-full w-full bg-gradient-to-r from-slate-500 to-slate-900">
+    <div className="h-full w-full flex-row items-center justify-center  bg-[#242731]">
       <div className="py-1">
         <Navbar />
       </div>
-      <GoAlertFill className="mx-auto py-auto mt-28 w-64 h-64 text-red-500" />
+      <GoAlertFill className="py-auto mx-auto mt-28 h-64 w-64 text-red-500" />
       <div className="text-center">
-        <h1 className="mb-4 text-7xl font-semibold text-red-500 mt-5">404</h1>
+        <h1 className="mb-4 mt-5 text-7xl font-semibold text-red-500">404</h1>
         <p className="mb-4 text-2xl text-gray-900">
           Aradığınız sayfa bulunamadı.
         </p>
@@ -18,7 +18,7 @@ const NotFound = () => {
           Ana sayfaya{" "}
           <Link
             href="/settings"
-            className="text-slate-400 hover:text-slate-100 hover:ease-in-out duration-150 transition"
+            className="text-slate-400 transition duration-150 hover:text-slate-100 hover:ease-in-out"
           >
             geri dön.
           </Link>

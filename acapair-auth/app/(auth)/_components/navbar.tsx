@@ -5,15 +5,17 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@/components/auth/user-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import NavbarApp from "@/components/auth/navbar-app";
 
 const Navbar = () => {
   const pathname = usePathname();
   const currentUser = useCurrentUser();
 
   return (
-    <div className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[680px] shadow-sm mb-3">
+    <div className="mb-3 flex w-[680px] items-center justify-between rounded-xl bg-secondary p-4 shadow-sm">
       <div className="flex gap-x-2">
+        <Button asChild variant={pathname === "/home" ? "default" : "outline"}>
+          <Link href="/home">Ana Sayfa</Link>
+        </Button>
         <Button
           asChild
           variant={pathname === "/settings" ? "default" : "outline"}
