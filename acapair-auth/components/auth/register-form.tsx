@@ -61,7 +61,7 @@ const RegisterForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Ad</FormLabel>
+                  <FormLabel>Kullanıcı Adı</FormLabel>
                   <FormControl>
                     <Input
                       {...field}

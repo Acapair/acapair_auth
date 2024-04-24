@@ -64,20 +64,20 @@ const SettingsPage = () => {
   return (
     <Card className="w-[680px]">
       <CardHeader>
-        <h1 className="text-bold mb-1 p-3 text-center text-xl text-slate-700 shadow-sm">
+        <h1 className="text-bold text-center text-xl text-slate-700 shadow-sm">
           ⚙️ Ayarlar
         </h1>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="space-y-4">
+          <form className="space-y-5" onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-3">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>İsim</FormLabel>
+                    <FormLabel>Kullanıcı Adı</FormLabel>
                     <FormControl>
                       <Input
                         {...field}

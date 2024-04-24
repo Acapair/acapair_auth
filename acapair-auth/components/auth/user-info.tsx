@@ -26,7 +26,7 @@ const UserInfo = ({ user, label }: UserInfoProps) => {
           </p>
         </div>
         <div className="mb-2 flex flex-row items-center justify-between rounded-lg border p-3 shadow-lg">
-          <p className="text-sm font-medium">İsim</p>
+          <p className="text-sm font-medium">Kullanıcı Adı</p>
           <p className="max-w-[200px] truncate rounded-md bg-slate-100 p-1 font-mono text-xs">
             {user?.name}
           </p>

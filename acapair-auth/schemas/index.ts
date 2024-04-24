@@ -1,9 +1,13 @@
-import { UserRole } from "@prisma/client";
 import * as z from "zod";
 
 export const SettingsSchema = z
   .object({
-    name: z.optional(z.string()),
+    name: z
+      .string()
+      .refine((name) => !name.includes(" "), {
+        message: "Kullanıcı adı boşluk içeremez.",
+      })
+      .optional(),
     isTwoFactorEnabled: z.optional(z.boolean()),
     email: z.optional(z.string().email()),
     password: z.optional(z.string().min(6)),
@@ -20,7 +24,7 @@ export const SettingsSchema = z
     {
       message: "Lütfen mevcut şifrenizi veya yeni şifrenizi girin.",
       path: ["newPassword", "password"],
-    }
+    },
   );
 
 export const ResetSchema = z.object({
@@ -46,8 +50,8 @@ export const RegisterSchema = z.object({
   password: z.string().min(6, {
     message: "Şifre alanı 6 karakterden uzun olmalıdır.",
   }),
-  name: z.string().min(1, {
-    message: "Ad alanı boş bırakılamaz.",
+  name: z.string().refine((name) => !name.includes(" "), {
+    message: "Kullanıcı adı boşluk içeremez.",
   }),
 });
 

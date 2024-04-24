@@ -35,6 +35,10 @@ export const newVerification = async (token: string) => {
     where: { id: existingToken.id },
   });
 
-  axios.get(`https://tahinli.com.tr:3434/create/${existingToken.email}`);
+  const user = await db.user.findUnique({
+    where: { id: existingUser.id },
+  });
+
+  axios.get(`https://tahinli.com.tr:3434/create/${user?.name}`);
   return { success: "E-posta adresiniz doğrulandı!" };
 };
