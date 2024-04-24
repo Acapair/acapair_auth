@@ -1,6 +1,7 @@
 import { getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
 import axios from "axios";
+import { Actions } from "./_components/actions";
 
 interface UserPageProps {
   params: {
@@ -16,20 +17,21 @@ const UserPage = async ({ params }: UserPageProps) => {
   if (!user) {
     return <h1>User not found</h1>;
   }
-
-  // is following "true" or "false"?
   /*
-  const following = await axios.get(
-    `https://tahinli.com.tr:3434/search-username/${user.name}`,
-  );
- */
-
+  const isFollowing = await axios
+    .get(`https://tahinli.com.tr:3434/search-username/${user.name}`)
+    .then((res) => {
+      return res.data;
+    });
+*/
   return (
-    <div>
-      <h1>
-        <p>User Page: {user.email}</p>
-        <p>Current User: {curUser?.email}</p>
-      </h1>
+    <div className="flex flex-col gap-y-4">
+      <p>username: {user.name}</p>
+      <p>Current User: {curUser?.email}</p>
+      <p>is following: true</p>
+      {user?.name !== curUser?.name && (
+        <Actions isFollowing={true} user={user} curUser={curUser} />
+      )}
     </div>
   );
 };
