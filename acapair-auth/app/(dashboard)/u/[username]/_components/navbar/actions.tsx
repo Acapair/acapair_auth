@@ -13,10 +13,10 @@ export const Actions = () => {
         variant="ghost"
         asChild
       >
-        <Link href="/home">
+        <div>
           <ExitIcon className="mr-2 h-5 w-5" />
           <LogoutButton>Çıkış Yap</LogoutButton>
-        </Link>
+        </div>
       </Button>
       <UserButton />
     </div>
