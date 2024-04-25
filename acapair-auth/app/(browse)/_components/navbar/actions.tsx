@@ -18,9 +18,9 @@ export const Actions = async () => {
             className="text-muted-foreground hover:text-slate-900"
             asChild
           >
-            <Link href={`/u/${user.id}`}>
+            <Link href={`/u/${user.name}`}>
               <Clapperboard className="h-5 w-5 lg:mr-3" />
-              <span className="text-md hidden lg:block">Kontrol Paneli</span>
+              <span className="text-md hidden lg:block">Yayıncı Paneli</span>
             </Link>
           </Button>
           <div className="pl-1">

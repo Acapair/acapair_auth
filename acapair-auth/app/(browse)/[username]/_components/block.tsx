@@ -15,7 +15,6 @@ interface BlockProps {
 export const Block = ({ isBanned, user, curUser }: BlockProps) => {
   const [isPending, startTransition] = useTransition();
   const [banned, setBanned] = useState(isBanned);
-  console.log(banned);
 
   const onclick = () => {
     startTransition(async () => {
