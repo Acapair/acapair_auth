@@ -15,7 +15,7 @@ export const Toggle = () => {
   return (
     <>
       {collapsed && (
-        <div className="mb-4 hidden w-full items-center justify-center pt-4 lg:flex">
+        <div className="hidden w-full items-center justify-center pt-4 lg:flex">
           <Hint label={label} side="right" asChild>
             <Button onClick={onExpand} variant="ghost" className="h-auto p-2">
               <ArrowRightFromLine className="h-4 w-4" />
@@ -24,8 +24,8 @@ export const Toggle = () => {
         </div>
       )}
       {!collapsed && (
-        <div className="mb-2 flex w-full items-center p-3 pl-2">
-          <p className="font-semibold text-white">Önerilen Kanallar</p>
+        <div className="flex w-full items-center p-2 pl-2">
+          Size Özel
           <Hint label={label} side="right" asChild>
             <Button
               onClick={onCollapse}
