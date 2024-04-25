@@ -2,42 +2,39 @@
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Heart, HeartCrack } from "lucide-react";
+import { Ban } from "lucide-react";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
-interface ActionsProps {
-  isFollowing: any;
+interface BlockProps {
+  isBanned: any;
   user: any;
   curUser: any;
 }
 
-export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
+export const Block = ({ isBanned, user, curUser }: BlockProps) => {
   const [isPending, startTransition] = useTransition();
-  const [following, setFollowing] = useState(isFollowing);
+  const [banned, setBanned] = useState(isBanned);
+  console.log(banned);
 
   const onclick = () => {
     startTransition(async () => {
-      if (!following) {
+      if (!banned) {
         await axios
-          .get(
-            `https://tahinli.com.tr:3434/follow/${curUser.name}/${user.name}`,
-          )
+          .get(`https://tahinli.com.tr:3434/ban/${user.name}/${curUser.name}`)
           .then(() => {
-            toast.success("Başarıyla takip edildi.");
-            setFollowing(true);
+            toast.success("Kullanıcı engellendi.");
+            setBanned(true);
           })
           .catch(() => {
             toast.error("Bir şeyler ters gitti.");
           });
       } else {
         await axios
-          .get(
-            `https://tahinli.com.tr:3434/unfollow/${curUser.name}/${user.name}`,
-          )
+          .get(`https://tahinli.com.tr:3434/unban/${user.name}/${curUser.name}`)
           .then(() => {
-            toast.success("Başarıyla takip bırakıldı.");
-            setFollowing(false);
+            toast.success("Engel kaldırıldı.");
+            setBanned(false);
           })
           .catch(() => {
             toast.error("Bir şeyler ters gitti.");
@@ -49,19 +46,19 @@ export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
   return (
     <Button
       disabled={isPending}
-      variant="primary"
+      variant="danger"
       onClick={onclick}
       className="w-52"
     >
-      {following ? (
+      {banned ? (
         <div className="flex items-center justify-center gap-x-2">
-          <Heart className="h-5 w-5" />
-          <p> Takip Et </p>
+          <Ban className="h-5 w-5" />
+          <p> Engeli Kaldır </p>
         </div>
       ) : (
         <div className="flex items-center justify-center gap-x-2">
-          <HeartCrack className="h-5 w-5" />
-          <p> Takibi Bırak</p>
+          <Ban className="h-5 w-5" />
+          <p> Engelle</p>
         </div>
       )}
     </Button>

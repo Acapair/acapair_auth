@@ -2,6 +2,7 @@ import { getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
 import axios from "axios";
 import { Actions } from "./_components/actions";
+import { Block } from "./_components/block";
 
 interface UserPageProps {
   params: {
@@ -26,15 +27,26 @@ const UserPage = async ({ params }: UserPageProps) => {
       return res.data.is_follower;
     });
 
+  const isBanned = await axios
+    .get(`https://tahinli.com.tr:3434/is-banned/${user?.name}/${curUser?.name}`)
+    .then((res) => {
+      return res.data.is_banned;
+    });
+
+  console.log(isBanned);
   return (
     <div className="flex flex-col gap-y-4">
       <div>
         {user?.name}
         {user?.email}
         {isFollowing}
+        {isBanned}
       </div>
       {user?.name !== curUser?.name && (
-        <Actions isFollowing={isFollowing} user={user} curUser={curUser} />
+        <div className="flex flex-col gap-y-2">
+          <Actions isFollowing={isFollowing} user={user} curUser={curUser} />
+          <Block isBanned={isBanned} user={user} curUser={curUser} />
+        </div>
       )}
     </div>
   );

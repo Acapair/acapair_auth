@@ -10,7 +10,6 @@ export const Sidebar = async () => {
   const data = await axios
     .get(`https://tahinli.com.tr:3434/search-username/${curUser?.name}`)
     .then((res) => {
-      console.log(res.data.channel.followed_list);
       return res.data.channel.followed_list;
     });
 
