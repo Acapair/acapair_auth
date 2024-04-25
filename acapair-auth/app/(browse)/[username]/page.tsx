@@ -18,7 +18,7 @@ const UserPage = async ({ params }: UserPageProps) => {
     return <h1>User not found</h1>;
   }
 
-  const isFollowing = axios
+  const isFollowing = await axios
     .get(
       `https://tahinli.com.tr:3434/is-follower/${curUser?.name}/${user?.name}`,
     )
@@ -28,8 +28,13 @@ const UserPage = async ({ params }: UserPageProps) => {
 
   return (
     <div className="flex flex-col gap-y-4">
+      <div>
+        {user?.name}
+        {user?.email}
+        {isFollowing}
+      </div>
       {user?.name !== curUser?.name && (
-        <Actions isFollowing={false} user={user} curUser={curUser} />
+        <Actions isFollowing={isFollowing} user={user} curUser={curUser} />
       )}
     </div>
   );

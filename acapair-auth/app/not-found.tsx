@@ -17,7 +17,7 @@ const NotFound = () => {
         <p className="mt-4 text-xl text-gray-400">
           Ana sayfaya{" "}
           <Link
-            href="/settings"
+            href="/home"
             className="text-slate-400 transition duration-150 hover:text-slate-100 hover:ease-in-out"
           >
             geri dön.

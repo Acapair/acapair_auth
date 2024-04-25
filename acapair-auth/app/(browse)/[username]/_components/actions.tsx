@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Heart } from "lucide-react";
+import { Heart, HeartCrack } from "lucide-react";
 import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 
@@ -51,9 +51,19 @@ export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
       disabled={isPending}
       variant="primary"
       onClick={onclick}
-      className="w-56"
+      className="w-52"
     >
-      {following ? "Takibi bırak" : "Takip et"}
+      {following ? (
+        <div className="flex items-center justify-center gap-x-2">
+          <Heart className="h-5 w-5" />
+          <p> Takip Et </p>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center gap-x-2">
+          <HeartCrack className="h-5 w-5" />
+          <p> Takibi Bırak</p>
+        </div>
+      )}
     </Button>
   );
 };
