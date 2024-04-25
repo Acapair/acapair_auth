@@ -11,10 +11,10 @@ const NotFound = () => {
       <GoAlertFill className="py-auto mx-auto mt-28 h-64 w-64 text-red-500" />
       <div className="text-center">
         <h1 className="mb-4 mt-5 text-7xl font-semibold text-red-500">404</h1>
-        <p className="mb-4 text-2xl text-gray-900">
+        <p className="mb-4 text-2xl text-gray-400">
           Aradığınız sayfa bulunamadı.
         </p>
-        <p className="mt-4 text-xl text-gray-900">
+        <p className="mt-4 text-xl text-gray-400">
           Ana sayfaya{" "}
           <Link
             href="/settings"

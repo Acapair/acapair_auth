@@ -17,20 +17,19 @@ const UserPage = async ({ params }: UserPageProps) => {
   if (!user) {
     return <h1>User not found</h1>;
   }
-  /*
-  const isFollowing = await axios
-    .get(`https://tahinli.com.tr:3434/search-username/${user.name}`)
+
+  const isFollowing = axios
+    .get(
+      `https://tahinli.com.tr:3434/is-follower/${curUser?.name}/${user?.name}`,
+    )
     .then((res) => {
-      return res.data;
+      return res.data.is_follower;
     });
-*/
+
   return (
     <div className="flex flex-col gap-y-4">
-      <p>username: {user.name}</p>
-      <p>Current User: {curUser?.email}</p>
-      <p>is following: true</p>
       {user?.name !== curUser?.name && (
-        <Actions isFollowing={true} user={user} curUser={curUser} />
+        <Actions isFollowing={false} user={user} curUser={curUser} />
       )}
     </div>
   );

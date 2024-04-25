@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { redirect } from "next/navigation";
-import { useTransition } from "react";
+import { Heart } from "lucide-react";
+import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 interface ActionsProps {
@@ -13,25 +13,19 @@ interface ActionsProps {
 }
 
 export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
-  // unfollow
-  /*
-  const following = await axios.get(
-    `https://tahinli.com.tr:3434/unfollow/${curUser.name}/${user.name}`,
-  );s
- */
-
   const [isPending, startTransition] = useTransition();
-  isFollowing = true;
+  const [following, setFollowing] = useState(isFollowing);
 
   const onclick = () => {
     startTransition(async () => {
-      if (!isFollowing) {
+      if (!following) {
         await axios
           .get(
             `https://tahinli.com.tr:3434/follow/${curUser.name}/${user.name}`,
           )
           .then(() => {
             toast.success("Başarıyla takip edildi.");
+            setFollowing(true);
           })
           .catch(() => {
             toast.error("Bir şeyler ters gitti.");
@@ -43,18 +37,23 @@ export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
           )
           .then(() => {
             toast.success("Başarıyla takip bırakıldı.");
+            setFollowing(false);
           })
           .catch(() => {
             toast.error("Bir şeyler ters gitti.");
           });
       }
     });
-    redirect(`/${user.name}`);
   };
 
   return (
-    <Button disabled={isPending} variant="primary" onClick={onclick}>
-      {isFollowing ? "Takibi bırak" : "Takip et"}
+    <Button
+      disabled={isPending}
+      variant="primary"
+      onClick={onclick}
+      className="w-56"
+    >
+      {following ? "Takibi bırak" : "Takip et"}
     </Button>
   );
 };
