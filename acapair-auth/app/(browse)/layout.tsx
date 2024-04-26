@@ -4,7 +4,7 @@ import { Sidebar } from "./_components/sidebar";
 
 const BrowseLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex h-full min-h-screen w-full flex-col">
+    <div className="flex h-full min-h-screen w-full flex-col bg-gray-700">
       <Navbar />
       <div className="mt-20 flex h-full pl-3">
         <Sidebar />

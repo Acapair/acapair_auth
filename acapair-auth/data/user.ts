@@ -18,6 +18,9 @@ export const getUserByUsername = async (name: string) => {
   try {
     const user = await db.user.findUnique({
       where: { name },
+      include: {
+        stream: true,
+      },
     });
     return user;
   } catch (error) {
