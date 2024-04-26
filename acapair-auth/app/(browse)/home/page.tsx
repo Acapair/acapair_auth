@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div>
+    <div className="p-6">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet officiis
       autem, corrupti neque nisi reiciendis culpa quos quam ex animi repellendus
       temporibus iste sit ea nulla debitis fuga quaerat!

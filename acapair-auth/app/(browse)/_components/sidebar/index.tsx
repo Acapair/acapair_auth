@@ -1,5 +1,5 @@
 import { Wrapper } from "./wrapper";
-import { Toggle, ToggleSkeleton } from "./toggle";
+import { Toggle } from "./toggle";
 import Following from "./following";
 import { currentUser } from "@/lib/auth";
 import axios from "axios";
@@ -35,7 +35,7 @@ export const Sidebar = async () => {
 export const SidebarSkeleton = () => {
   return (
     <aside className="fixed left-0 z-50 flex h-full w-[70px] flex-col border-r border-[#2D2E35] bg-background lg:w-60">
-      <ToggleSkeleton />
+      <Toggle />
     </aside>
   );
 };
