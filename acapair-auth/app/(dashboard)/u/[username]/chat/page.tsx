@@ -18,17 +18,17 @@ const ChatPage = async () => {
       <div className="space-y-4">
         <ToggleCard
           field="isChatEnabled"
-          label="Sohbeti Aç/Kapat"
+          label="Sohbeti aç veya kapat"
           value={stream?.isChatEnabled}
         />
         <ToggleCard
           field="isChatDelayed"
-          label="Sohbeti Geciktirme Aç/Kapat"
+          label="Sohbeti gecikmesini aç veya kapat"
           value={stream?.isChatDelayed}
         />
         <ToggleCard
           field="isChatFolloweOnly"
-          label="Abone Olanlara Sohbeti Aç/Kapat"
+          label="Sohbeti abone olanlara aç veya kapat"
           value={stream?.isChatFolloweOnly}
         />
       </div>
