@@ -1,7 +1,7 @@
 import LogoutButton from "@/components/auth/logout-button";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ExitIcon } from "@radix-ui/react-icons";
+import { HomeIcon } from "@radix-ui/react-icons";
 import { UserButton } from "@/components/auth/user-button";
 
 export const Actions = () => {
@@ -13,10 +13,10 @@ export const Actions = () => {
         variant="ghost"
         asChild
       >
-        <div>
-          <ExitIcon className="mr-2 h-5 w-5" />
-          <LogoutButton>Çıkış Yap</LogoutButton>
-        </div>
+        <Link href={"/home"}>
+          <HomeIcon className="mr-2 h-5 w-5" />
+          Ana Sayfa
+        </Link>
       </Button>
       <UserButton />
     </div>
