@@ -13,6 +13,7 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
+
 // Get user by username
 export const getUserByUsername = async (name: string) => {
   try {

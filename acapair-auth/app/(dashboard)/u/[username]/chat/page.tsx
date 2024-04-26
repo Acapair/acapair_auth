@@ -1,15 +1,14 @@
-import { getUserById, getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
 import ToggleCard from "./_components/toggle-card";
+import { getStreamByUserId } from "@/data/stream-service";
 
 const ChatPage = async () => {
   const user = await currentUser();
-  let userInfo;
-  if (user && user.name) {
-    userInfo = await getUserByUsername(user.name);
-  }
+  const stream = await getStreamByUserId(user?.id);
 
-  console.log(userInfo?.stream);
+  if (!stream) {
+    throw new Error("Stream not found");
+  }
 
   return (
     <div className="p-6">
@@ -19,8 +18,18 @@ const ChatPage = async () => {
       <div className="space-y-4">
         <ToggleCard
           field="isChatEnabled"
-          label="Enable Chat"
-          value={userInfo?.stream?.isChatEnabled}
+          label="Sohbeti Aç/Kapat"
+          value={stream?.isChatEnabled}
+        />
+        <ToggleCard
+          field="isChatDelayed"
+          label="Sohbeti Geciktirme Aç/Kapat"
+          value={stream?.isChatDelayed}
+        />
+        <ToggleCard
+          field="isChatFolloweOnly"
+          label="Abone Olanlara Sohbeti Aç/Kapat"
+          value={stream?.isChatFolloweOnly}
         />
       </div>
     </div>
