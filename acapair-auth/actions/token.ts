@@ -1,7 +1,7 @@
 "use server";
 
 import { v4 } from "uuid";
-import { AccessToken, AccessTokenOptions } from "livekit-server-sdk";
+import { AccessToken } from "livekit-server-sdk";
 
 import { currentUser } from "@/lib/auth";
 import { getUserByUsername } from "@/data/user";

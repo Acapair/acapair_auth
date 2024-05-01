@@ -17,16 +17,9 @@ const CreatorPage = async ({ params }: CreatorPageProps) => {
   //@ts-ignore
   const user = await getUserByUsername(curUser?.name);
 
-  if (user?.id !== curUser?.id || user?.stream) {
-    <div>Erişim izni yok.</div>;
-  }
-
   return (
     <div className="h-full">
       <StreamPlayer user={user} stream={user?.stream} />
-      <p>
-        <div></div>
-      </p>
     </div>
   );
 };
