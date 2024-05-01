@@ -7,9 +7,9 @@ interface UrlCardProps {
 
 const UrlCard = ({ value }: UrlCardProps) => {
   return (
-    <div className="rounded-xl bg-gray-900 p-6 text-white">
+    <div className="rounded-xl bg-gray-900 p-6 text-black">
       <div className="flex items-center gap-x-14">
-        <p className="shrink-0 font-semibold">Server URL</p>
+        <p className="shrink-0 font-semibold text-white">Server URL</p>
         <div className="w-full space-y-2">
           <div className="flex w-full items-center gap-x-2">
             <Input value={value || ""} disabled placeholder="Server URL" />

@@ -9,7 +9,7 @@ const KeysPage = async () => {
   const stream = await getStreamByUserId(user?.id);
 
   if (!stream) {
-    throw new Error("Stream not found");
+    return <div>Yayın bulunamadı</div>;
   }
 
   return (
