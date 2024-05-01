@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
-import { RiLiveLine } from "react-icons/ri";
 
 interface FollowingItemProps {
   data: any;
@@ -15,7 +14,6 @@ const FollowingItem = ({ data }: FollowingItemProps) => {
       <p className="flex items-center justify-center text-sm">
         <FaUser className="mr-2 inline text-gray-600" />
         {data.toLowerCase()}
-        <RiLiveLine className="ml-2 inline text-green-500" />
       </p>
     </Link>
   );
