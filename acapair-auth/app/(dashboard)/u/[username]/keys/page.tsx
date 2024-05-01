@@ -9,7 +9,7 @@ const KeysPage = async () => {
   const stream = await getStreamByUserId(user?.id);
 
   if (!stream) {
-    return <div>Yayın bulunamadı</div>;
+    return <div className="p-3 text-white">Yayın bulunamadı</div>;
   }
 
   return (

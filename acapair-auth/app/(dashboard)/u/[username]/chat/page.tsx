@@ -7,7 +7,11 @@ const ChatPage = async () => {
   const stream = await getStreamByUserId(user?.id);
 
   if (!stream) {
-    throw new Error("Stream not found");
+    return (
+      <div className="p-3 text-white">
+        Sohbeti ayarı yapılacak bir yayın bulunamadı.
+      </div>
+    );
   }
 
   return (
