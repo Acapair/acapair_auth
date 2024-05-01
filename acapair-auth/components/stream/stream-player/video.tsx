@@ -1,9 +1,12 @@
+"use client";
+
 import { ConnectionState, Track } from "livekit-client";
 import {
   useConnectionState,
   useRemoteParticipant,
   useTracks,
 } from "@livekit/components-react";
+import { useState } from "react";
 
 interface VideoProps {
   hostName: string;
@@ -19,13 +22,13 @@ const Video = ({ hostName, hostIdentity }: VideoProps) => {
   ]).filter((track) => track.participant.identity === hostIdentity);
 
   let content;
-
+  console.log(connectionState);
   if (!participant && connectionState === ConnectionState.Connected) {
     content = <p>Canlı yayın aktif değil.</p>;
   } else if (!participant || tracks.length === 0) {
     content = <p>Yayın yükleniyor...</p>;
   } else {
-    content = <video autoPlay playsInline muted ref={participant.videoRef} />;
+    content = <p>Online</p>;
   }
 
   return <div className="group relative aspect-video border-b">{content}</div>;

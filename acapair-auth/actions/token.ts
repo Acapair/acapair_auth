@@ -4,7 +4,7 @@ import { v4 } from "uuid";
 import { AccessToken } from "livekit-server-sdk";
 
 import { currentUser } from "@/lib/auth";
-import { getUserByUsername } from "@/data/user";
+import { getUserById, getUserByUsername } from "@/data/user";
 import axios from "axios";
 
 export const createViewerToken = async (hostIdentity: string) => {
@@ -18,7 +18,7 @@ export const createViewerToken = async (hostIdentity: string) => {
   }
 
   //@ts-ignore
-  const host = await getUserByUsername(curUser?.name);
+  const host = await getUserById(hostIdentity);
 
   if (!host) {
     return { error: "Kullanıcı bulunamadı." };
@@ -26,7 +26,7 @@ export const createViewerToken = async (hostIdentity: string) => {
 
   // TO DO isBanned
 
-  const isHost = curUser?.name === host.id;
+  const isHost = curUser?.id === host.id;
 
   const token = new AccessToken(
     process.env.LIVEKIT_API_KEY!,
@@ -39,7 +39,7 @@ export const createViewerToken = async (hostIdentity: string) => {
   );
 
   token.addGrant({
-    room: hostIdentity,
+    room: host.id,
     roomJoin: true,
     canPublish: false,
     canPublishData: false,

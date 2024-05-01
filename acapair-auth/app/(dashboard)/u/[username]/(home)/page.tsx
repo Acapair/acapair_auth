@@ -12,10 +12,10 @@ interface CreatorPageProps {
 const CreatorPage = async ({ params }: CreatorPageProps) => {
   const curUser = await currentUser();
   if (!curUser) {
-    redirect("/");
+    redirect("/login");
   }
   //@ts-ignore
-  const user = await getUserByUsername(curUser?.name);
+  const user = await getUserByUsername(params.username);
 
   return (
     <div className="h-full">
