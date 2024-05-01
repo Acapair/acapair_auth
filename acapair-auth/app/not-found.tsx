@@ -18,7 +18,7 @@ const NotFound = () => {
           Ana sayfaya{" "}
           <Link
             href="/home"
-            className="text-slate-400 transition duration-150 hover:text-slate-100 hover:ease-in-out"
+            className="text-blue-600 underline transition duration-150 hover:text-slate-100 hover:ease-in-out"
           >
             geri dön.
           </Link>

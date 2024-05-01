@@ -18,7 +18,7 @@ export async function POST(req: Request) {
   }
 
   const event = await recevier.receive(body, authorization);
-  if (event.event === "ingress_started") {
+  if (event.event.toLocaleLowerCase() == "track_published") {
     await db.stream.update({
       where: {
         ingressId: event.ingressInfo?.ingressId,
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     });
   }
 
-  if (event.event === "ingress_ended") {
+  if (event.event.toLowerCase() == "track_unpublished") {
     await db.stream.update({
       where: {
         ingressId: event.ingressInfo?.ingressId,

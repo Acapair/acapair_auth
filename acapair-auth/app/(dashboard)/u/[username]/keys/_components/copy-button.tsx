@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckCheck, Copy } from "lucide-react";
 import { useState } from "react";
+import copy from "copy-to-clipboard";
 
 interface CopyButtonProps {
   value: string;
@@ -15,7 +16,7 @@ const CopyButton = ({ value }: CopyButtonProps) => {
     if (!value) return;
 
     setIsCopied(true);
-    navigator.clipboard.writeText(value);
+    copy(value);
     setTimeout(() => {
       setIsCopied(false);
     }, 1000);

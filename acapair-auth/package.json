@@ -29,6 +29,7 @@
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "copy-to-clipboard": "^3.3.3",
     "livekit-client": "^2.1.1",
     "livekit-server-sdk": "^2.2.0",
     "lucide-react": "^0.358.0",
