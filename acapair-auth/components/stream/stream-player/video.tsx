@@ -6,7 +6,9 @@ import {
   useRemoteParticipant,
   useTracks,
 } from "@livekit/components-react";
-import { useState } from "react";
+import OfflineVideo from "./offline-video";
+import LoadingVideo from "./loading";
+import { LiveVideo } from "./live-video";
 
 interface VideoProps {
   hostName: string;
@@ -24,11 +26,11 @@ const Video = ({ hostName, hostIdentity }: VideoProps) => {
   let content;
   console.log(connectionState);
   if (!participant && connectionState === ConnectionState.Connected) {
-    content = <p>Canlı yayın aktif değil.</p>;
+    content = <OfflineVideo username={hostName} />;
   } else if (!participant || tracks.length === 0) {
-    content = <p>Yayın yükleniyor...</p>;
+    content = <LoadingVideo label="Yayın yükleniyor..." />;
   } else {
-    content = <p>Online</p>;
+    content = <LiveVideo participant={participant} />;
   }
 
   return <div className="group relative aspect-video border-b">{content}</div>;

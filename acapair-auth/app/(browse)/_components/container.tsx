@@ -18,9 +18,9 @@ export const Container = ({ children }: ContainerProps) => {
 
   useEffect(() => {
     if (matches) {
-      onCollapse();
-    } else {
       onExpand();
+    } else {
+      onCollapse();
     }
   }, [onCollapse, onExpand, matches]);
 
