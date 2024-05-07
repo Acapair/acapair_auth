@@ -9,6 +9,7 @@ import {
   useParticipants,
   useRemoteParticipant,
 } from "@livekit/components-react";
+import { Actions } from "./actions";
 
 interface HeaderProps {
   imageUrl: string;
@@ -66,12 +67,8 @@ export const Header = ({
           )}
         </div>
       </div>
-      {/* 
-      <Actions
-        isFollowing={isFollowing}
-        isHost={isHost}
-        hostIdentity={hostIdentity}
-      />*/}
+
+      <Actions isFollowing={isFollowing} hostIdentity={hostIdentity} />
     </div>
   );
 };
@@ -86,7 +83,6 @@ export const HeaderSkeleton = () => {
           <Skeleton className="h-4 w-24" />
         </div>
       </div>
-      {/*<ActionsSkeleton />*/}
     </div>
   );
 };

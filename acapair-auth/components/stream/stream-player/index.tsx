@@ -12,9 +12,10 @@ import { Header } from "./header";
 interface StreamPlayerProps {
   user: any;
   stream: any;
+  isFollowing: any;
 }
 
-const StreamPlayer = ({ user, stream }: StreamPlayerProps) => {
+const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
   const { token, name, identity } = useViewerToken(user.id);
   const { collapsed } = useChatSidebar((state) => state);
 
@@ -47,7 +48,7 @@ const StreamPlayer = ({ user, stream }: StreamPlayerProps) => {
             hostIdentity={user.id}
             viewerIdentity={identity}
             imageUrl={user.imageUrl}
-            isFollowing={true}
+            isFollowing={isFollowing}
             name={stream.name}
           />
         </div>

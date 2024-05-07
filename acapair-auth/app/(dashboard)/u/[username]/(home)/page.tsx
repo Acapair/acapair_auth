@@ -1,6 +1,7 @@
 import StreamPlayer from "@/components/stream/stream-player";
 import { getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
+import axios from "axios";
 import { redirect } from "next/navigation";
 
 interface CreatorPageProps {
@@ -17,9 +18,17 @@ const CreatorPage = async ({ params }: CreatorPageProps) => {
   //@ts-ignore
   const user = await getUserByUsername(params.username);
 
+  const isFollowing = axios.get(
+    `https://tahinli.com.tr:3434/is-follower/${curUser?.name}/${user?.name}`,
+  );
+
   return (
     <div className="h-full">
-      <StreamPlayer user={user} stream={user?.stream} />
+      <StreamPlayer
+        user={user}
+        stream={user?.stream}
+        isFollowing={isFollowing}
+      />
     </div>
   );
 };
