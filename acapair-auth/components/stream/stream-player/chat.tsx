@@ -13,6 +13,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 import { ChatHeader } from "./chat-header";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
+import { ChatCommunity } from "./chat-community";
 
 interface ChatProps {
   hostName: string;
@@ -80,6 +81,13 @@ export const Chat = ({
             isFollowing={isFollowing}
           />
         </>
+      )}
+      {variant === ChatVariant.COMMUNITY && (
+        <ChatCommunity
+          viewerName={viewerName}
+          hostName={hostName}
+          isHidden={isHidden}
+        />
       )}
     </div>
   );

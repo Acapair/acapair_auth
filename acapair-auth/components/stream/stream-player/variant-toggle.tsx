@@ -14,11 +14,11 @@ export const VariantToggle = () => {
   const Icon = isChat ? Users : MessageSquare;
 
   const onToggle = () => {
-    const newVariant = isChat ? ChatVariant.COMMUNITY : ChatVariant.CHAT;
+    const newVariant = isChat ? ChatVariant.CHAT : ChatVariant.CHAT;
     onChangeVariant(newVariant);
   };
 
-  const label = isChat ? "Topluluk" : "Sohbete geri dön";
+  const label = isChat ? "Topluluk" : "Sohbet";
 
   return (
     <Hint label={label} side="left" asChild>

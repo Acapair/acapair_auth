@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
+import { Header } from "./header";
 
 interface StreamPlayerProps {
   user: any;
@@ -41,6 +42,14 @@ const StreamPlayer = ({ user, stream }: StreamPlayerProps) => {
       >
         <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
           <Video hostName={user.name} hostIdentity={user.id} />
+          <Header
+            hostName={user.name}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            imageUrl={user.imageUrl}
+            isFollowing={true}
+            name={stream.name}
+          />
         </div>
         <div
           className={cn("md:col-span-1 xl:col-span-3", collapsed && "hidden")}
