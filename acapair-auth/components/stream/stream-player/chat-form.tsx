@@ -67,7 +67,7 @@ export const ChatForm = ({
           disabled={isDisabled}
           placeholder="Sohbet Et"
           className={cn(
-            "border-white/10",
+            "border-white/10 text-black",
             (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0",
           )}
         />
