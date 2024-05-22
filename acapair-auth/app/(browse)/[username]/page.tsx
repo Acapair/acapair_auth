@@ -3,6 +3,8 @@ import { currentUser } from "@/lib/auth";
 import axios from "axios";
 import { Actions } from "./_components/actions";
 import { Block } from "./_components/block";
+import StreamPlayer from "@/components/stream/stream-player";
+import { revalidatePath } from "next/cache";
 
 interface UserPageProps {
   params: {
@@ -14,10 +16,6 @@ const UserPage = async ({ params }: UserPageProps) => {
   const { username } = params;
   const user = await getUserByUsername(username);
   const curUser = await currentUser();
-
-  if (!user) {
-    return <h1>User not found</h1>;
-  }
 
   const isFollowing = await axios
     .get(
@@ -33,22 +31,13 @@ const UserPage = async ({ params }: UserPageProps) => {
       return res.data.is_banned;
     });
 
+  if (!user || !user.stream || isBanned) {
+    return <h1>Kullanıcı Bulunamadı</h1>;
+  }
+
   console.log(isBanned);
   return (
-    <div className="flex flex-col gap-y-4">
-      <div>
-        {user?.name}
-        {user?.email}
-        {isFollowing}
-        {isBanned}
-      </div>
-      {user?.name !== curUser?.name && (
-        <div className="flex flex-col gap-y-2">
-          <Actions isFollowing={isFollowing} user={user} curUser={curUser} />
-          <Block isBanned={isBanned} user={user} curUser={curUser} />
-        </div>
-      )}
-    </div>
+    <StreamPlayer user={user} stream={user.stream} isFollowing={isFollowing} />
   );
 };
 

@@ -1,11 +1,13 @@
-const Home = () => {
+import { Suspense } from "react";
+
+import { Results, ResultsSkeleton } from "./_components/results";
+
+export default function Page() {
   return (
-    <div className="mx-auto flex">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet officiis
-      autem, corrupti neque nisi reiciendis culpa quos quam ex animi repellendus
-      temporibus iste sit ea nulla debitis fuga quaerat!
+    <div className="mx-auto h-full max-w-screen-2xl p-8">
+      <Suspense fallback={<ResultsSkeleton />}>
+        <Results />
+      </Suspense>
     </div>
   );
-};
-
-export default Home;
+}
