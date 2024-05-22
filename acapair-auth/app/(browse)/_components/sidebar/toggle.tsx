@@ -23,8 +23,8 @@ export const Toggle = () => {
         </div>
       )}
       {!collapsed && (
-        <div className="flex w-full items-center p-2 pl-2">
-          Size Özel
+        <div className="flex w-full items-center p-2 pl-2 text-sm">
+          Takip Edilenler
           <Hint label={label} side="right" asChild>
             <Button
               onClick={onCollapse}

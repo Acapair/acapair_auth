@@ -16,8 +16,7 @@ const Following = ({ data }: FollowingProps) => {
     <div>
       {showLabel && (
         <div>
-          <span className="ml-2 mr-2 text-xs font-bold">Takip edilenler</span>
-          <div className="mb-2 w-full flex-col items-center pl-2 pr-2 pt-3">
+          <div className="mb-2 w-full flex-col items-center pl-2 pr-2 pt-1">
             {data.map((item: any) => (
               <FollowingItem key={item} data={item} />
             ))}

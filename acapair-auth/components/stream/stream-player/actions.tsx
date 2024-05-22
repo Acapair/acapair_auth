@@ -21,6 +21,7 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
   const onclick = () => {
     startTransition(async () => {
       const user = await getUserById(hostIdentity);
+      console.log(user);
       if (!following) {
         await axios
           .get(

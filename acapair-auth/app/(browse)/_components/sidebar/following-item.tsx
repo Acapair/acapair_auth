@@ -11,8 +11,8 @@ const FollowingItem = ({ data }: FollowingItemProps) => {
       href={`/${data}`}
       className="bg-gray-850 mb-2 flex flex-row items-center justify-between rounded-lg border p-3 pr-2 shadow-lg hover:bg-slate-800"
     >
-      <p className="flex items-center justify-center text-sm">
-        <FaUser className="mr-2 inline text-gray-600" />
+      <p className="flex items-center justify-between text-sm">
+        <FaUser className="mr-2 inline text-gray-300" />
         {data.toLowerCase()}
       </p>
     </Link>
