@@ -57,7 +57,7 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
       disabled={isPending}
       variant="primary"
       onClick={onclick}
-      className="w-52"
+      className="w-96 md:w-52 "
     >
       {following ? (
         <div className="flex items-center justify-center gap-x-2">

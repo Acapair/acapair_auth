@@ -8,6 +8,8 @@ import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Header } from "./header";
+import { InfoCard } from "./info-card";
+import { AboutCard } from "./about-card";
 
 interface StreamPlayerProps {
   user: any;
@@ -37,11 +39,12 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
         token={token}
         serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL}
         className={cn(
-          "grid h-full grid-cols-1 lg:grid-cols-3 lg:gap-y-0 xl:grid-cols-3 2xl:grid-cols-10",
-          collapsed && "lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-6",
+          "grid h-full grid-cols-1 bg-[#374151] lg:grid-cols-3 lg:gap-y-0 xl:grid-cols-3 2xl:grid-cols-10",
+          collapsed &&
+            "bg-[#374151] lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-6",
         )}
       >
-        <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
+        <div className="hidden-scrollbar col-span-1 space-y-4  pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
           <Video hostName={user.name} hostIdentity={user.id} />
           <Header
             hostName={user.name}
@@ -50,6 +53,18 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
             imageUrl={user.imageUrl}
             isFollowing={isFollowing}
             name={stream.name}
+          />
+          <InfoCard
+            name={stream.name}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+          />
+          <AboutCard
+            hostName={user.name}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            bio={user.bio}
+            followedByCount={5}
           />
         </div>
         <div

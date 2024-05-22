@@ -37,7 +37,7 @@ export const Header = ({
   const isHost = viewerIdentity === hostIdentity;
 
   return (
-    <div className="justify between flex flex-col items-start gap-y-3 px-4 text-white lg:flex-row lg:gap-y-0 ">
+    <div className="flex flex-col items-start justify-between px-4 text-white md:flex-row ">
       <div className="flex items-center gap-x-3">
         <UserAvatar
           imageUrl={imageUrl}
@@ -51,7 +51,7 @@ export const Header = ({
             <h2 className="text-lg font-semibold">{hostName}</h2>
             <VerifiedMark />
           </div>
-          <p className=" text-sm font-semibold">{name}</p>
+          <p className=" text-sm font-semibold text-gray-300">{name}</p>
           {isLive ? (
             <div className="flex items-center gap-x-1 text-xs font-semibold text-rose-400">
               <UserIcon className="h-4 w-4" />
@@ -62,13 +62,14 @@ export const Header = ({
             </div>
           ) : (
             <p className="text-xs font-semibold text-muted-foreground">
-              Offline
+              Çevrim dışı
             </p>
           )}
         </div>
       </div>
-
-      <Actions isFollowing={isFollowing} hostIdentity={hostIdentity} />
+      <div className="pt-3">
+        <Actions isFollowing={isFollowing} hostIdentity={hostIdentity} />
+      </div>
     </div>
   );
 };

@@ -16,10 +16,8 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
-  // volume state to track the volume of the video
   const [volume, setVolume] = useState(0);
 
-  // onVolumeChange function to update the volume state
   const onVolumeChange = (value: number) => {
     setVolume(+value);
     if (videoRef?.current) {
@@ -28,7 +26,6 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
     }
   };
 
-  // toggleMute function to toggle the mute state
   const toggleMute = () => {
     const isMuted = volume === 0;
 
@@ -44,7 +41,6 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
     onVolumeChange(0);
   }, []);
 
-  // toggleFullscreen function to toggle the fullscreen mode
   const toggleFullscreen = () => {
     if (isFullscreen) {
       document.exitFullscreen();
@@ -53,7 +49,6 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
     }
   };
 
-  // handleFullscreenChange function to update the isFullscreen state
   const handleFullscreenChange = () => {
     const isCurrentlyFullscreen = document.fullscreenElement !== null;
     setIsFullscreen(isCurrentlyFullscreen);
