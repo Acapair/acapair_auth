@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { createStream, getUserByEmail } from "@/data/user";
+import { getUserByEmail } from "@/data/user";
 import { getVertificationTokenByToken } from "@/data/verification-token";
 import axios from "axios";
 

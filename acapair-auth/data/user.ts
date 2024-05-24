@@ -63,23 +63,6 @@ export const createUser = async (
   }
 };
 
-// Create Stream
-export const createStream = async (name: string, user: any, userId: any) => {
-  try {
-    const stream = await db.stream.create({
-      data: {
-        name,
-        userId,
-        user,
-      },
-    });
-    return stream;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
-
 // Get User
 export const getAllUsers = async (take: number) => {
   try {

@@ -3,9 +3,10 @@
 import * as z from "zod";
 import bcrypt from "bcrypt";
 import { RegisterSchema } from "@/schemas";
-import { createStream, createUser, getUserByEmail } from "@/data/user";
+import { createUser, getUserByEmail } from "@/data/user";
 import { generateVertificationToken } from "@/lib/tokens";
 import { sendVertificationEmail } from "@/lib/mail";
+import { createStream } from "@/data/stream";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
