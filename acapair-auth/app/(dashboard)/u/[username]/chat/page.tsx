@@ -8,8 +8,10 @@ const ChatPage = async () => {
 
   if (!stream) {
     return (
-      <div className="p-3 text-white">
-        Sohbeti ayarı yapılacak bir yayın bulunamadı.
+      <div className="mx-auto mt-5 max-w-md rounded-lg bg-red-500 p-4 text-center text-white shadow-lg">
+        <p className="text-lg font-semibold">
+          Sohbeti ayarı yapılacak bir yayın bulunamadı.
+        </p>
       </div>
     );
   }

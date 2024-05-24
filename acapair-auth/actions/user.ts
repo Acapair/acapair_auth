@@ -30,3 +30,7 @@ export const updateUser = async (values: Partial<User>) => {
 
   return user;
 };
+
+export const getUser = async (id: string) => {
+  return await getUserById(id);
+};

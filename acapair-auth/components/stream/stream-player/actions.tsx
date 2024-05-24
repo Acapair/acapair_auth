@@ -1,7 +1,7 @@
 "use client";
 
+import { getUser } from "@/actions/user";
 import { Button } from "@/components/ui/button";
-import { getUserById } from "@/data/user";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import axios from "axios";
 import { Heart, HeartCrack } from "lucide-react";
@@ -20,12 +20,13 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
 
   const onclick = () => {
     startTransition(async () => {
-      const user = await getUserById(hostIdentity);
-      console.log(user);
+      const user = await getUser(hostIdentity).then((res) => res?.name);
       if (!following) {
+        console.log(user);
         await axios
           .get(
-            `https://tahinli.com.tr:3434/follow/${curUser?.name}/${user?.name}`,
+            //@ts-ignore
+            `https://tahinli.com.tr:3434/follow/${decodeURI(curUser?.name || "")}/${decodeURI(user || "")}`,
           )
           .then(() => {
             toast.success("Başarıyla takip edildi.");
@@ -35,12 +36,12 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
             toast.error("Bir şeyler ters gitti.");
           });
       } else {
-        console.log(hostIdentity);
-        const user = await getUserById(hostIdentity);
-        console.log(user);
+        const user = await getUser(hostIdentity).then((res) => res?.name);
+
         await axios
           .get(
-            `https://tahinli.com.tr:3434/unfollow/${curUser?.name}/${user?.name}`,
+            //@ts-ignore
+            `https://tahinli.com.tr:3434/unfollow/${decodeURI(curUser?.name || "")}/${decodeURI(user || "")}`,
           )
           .then(() => {
             toast.success("Başarıyla takip bırakıldı.");
@@ -60,7 +61,7 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
       onClick={onclick}
       className="w-96 md:w-52 "
     >
-      {following ? (
+      {!following ? (
         <div className="flex items-center justify-center gap-x-2">
           <Heart className="h-5 w-5" />
           <p> Takip Et </p>
