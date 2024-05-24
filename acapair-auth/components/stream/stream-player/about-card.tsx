@@ -9,7 +9,7 @@ interface AboutCardProps {
   hostIdentity: string;
   viewerIdentity: string;
   bio: string | null;
-  followedByCount: number;
+  followedByCount: any;
 }
 
 export const AboutCard = ({

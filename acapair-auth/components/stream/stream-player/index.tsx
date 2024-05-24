@@ -10,6 +10,8 @@ import { ChatToggle } from "./chat-toggle";
 import { Header } from "./header";
 import { InfoCard } from "./info-card";
 import { AboutCard } from "./about-card";
+import { followerCount } from "@/lib/follower";
+import { useState, useTransition } from "react";
 
 interface StreamPlayerProps {
   user: any;
@@ -19,6 +21,7 @@ interface StreamPlayerProps {
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
   const { collapsed } = useChatSidebar((state) => state);
+  const [follower, setFollower] = useState<number | null>(0);
 
   if (!user) {
     return <div className="p-3 text-white">Kullanıcı bulunamadı.</div>;
@@ -26,6 +29,8 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 
   //eslint-disable-next-line
   const { token, name, identity } = useViewerToken(user.id);
+
+  const count = followerCount(user.name);
 
   if (!token || !name || !identity)
     return (
@@ -70,7 +75,7 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
             hostIdentity={user.id}
             viewerIdentity={identity}
             bio={user.bio}
-            followedByCount={5}
+            followedByCount={count}
           />
         </div>
         <div
