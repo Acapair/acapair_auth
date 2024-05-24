@@ -39,7 +39,19 @@ export const newVerification = async (token: string) => {
     where: { id: existingUser.id },
   });
 
-  await createStream(`${user?.name} Yayını`, user, user?.id);
+  if (!user) {
+    return { error: "Kullanıcı bulunamadı." };
+  }
+
+  await db.stream.create({
+    data: {
+      name: `${user.name} Yayını`,
+      //@ts-ignore
+      user: user,
+      userId: user.id,
+    },
+  });
+
   axios.get(`https://tahinli.com.tr:3434/create/${user?.name}`);
   return { success: "E-posta adresiniz doğrulandı!" };
 };
