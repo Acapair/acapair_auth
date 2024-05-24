@@ -3,8 +3,7 @@ import { currentUser } from "@/lib/auth";
 import { getStreamByUserId } from "@/data/stream-service";
 import KeyCard from "./_components/key-card";
 import ConnectModal from "./_components/connect-modal";
-import { Button } from "@/components/ui/button";
-import { createStream } from "@/data/user";
+import CreateStream from "./_components/create-stream";
 
 const KeysPage = async () => {
   const user = await currentUser();
@@ -12,7 +11,9 @@ const KeysPage = async () => {
 
   if (!stream) {
     return (
-      <div className="p-3 text-white">Yayın yapmak için kanal bulunamadı.</div>
+      <div className="p-3 text-white">
+        <CreateStream name={`${user?.name} Yayını`} user={user} id={user?.id} />
+      </div>
     );
   }
 

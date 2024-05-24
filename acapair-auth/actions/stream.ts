@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 
 import { Stream } from "@prisma/client";
 import { currentUser } from "@/lib/auth";
+import { createStream } from "@/data/stream";
 
 export const updateStream = async (values: Partial<Stream>) => {
   try {
@@ -40,6 +41,18 @@ export const updateStream = async (values: Partial<Stream>) => {
     revalidatePath(`/${user?.name}/chat`);
 
     return updateStream;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//@ts-ignore
+export const createStreamAction = async (name: string, user: any, id: any) => {
+  try {
+    //@ts-ignore
+    const newStream = await createStream(name, user, id);
+    revalidatePath(`/u/${user?.name}/keys`);
+    return newStream;
   } catch (error) {
     console.log(error);
   }
