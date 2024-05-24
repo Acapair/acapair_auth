@@ -1,4 +1,5 @@
 import StreamPlayer from "@/components/stream/stream-player";
+import { Button } from "@/components/ui/button";
 import { getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
 import axios from "axios";
@@ -16,7 +17,7 @@ const CreatorPage = async ({ params }: CreatorPageProps) => {
     redirect("/login");
   }
   //@ts-ignore
-  const user = await getUserByUsername(params.username);
+  const user = await getUserByUsername(decodeURI(params.username));
 
   const isFollowing = axios.get(
     `https://tahinli.com.tr:3434/is-follower/${curUser?.name}/${user?.name}`,

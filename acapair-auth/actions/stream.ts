@@ -16,7 +16,7 @@ export const updateStream = async (values: Partial<Stream>) => {
     });
 
     if (!stream) {
-      throw new Error("Stream not found");
+      throw new Error("Yayın bulunamadı.");
     }
 
     const validData = {

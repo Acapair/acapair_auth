@@ -18,13 +18,19 @@ interface StreamPlayerProps {
 }
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
-  const { token, name, identity } = useViewerToken(user.id);
   const { collapsed } = useChatSidebar((state) => state);
+
+  if (!user) {
+    return <div className="p-3 text-white">Kullanıcı bulunamadı.</div>;
+  }
+
+  //eslint-disable-next-line
+  const { token, name, identity } = useViewerToken(user.id);
 
   if (!token || !name || !identity)
     return (
-      <div className="text-white">
-        <p>Bu yayını izleyemezsin.</p>
+      <div className="p-3 text-white">
+        <p>Bu yayını izlemek için erişime sahip olmalısınız.</p>
       </div>
     );
 
@@ -52,10 +58,10 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
             viewerIdentity={identity}
             imageUrl={user.imageUrl}
             isFollowing={isFollowing}
-            name={stream.name}
+            name={stream?.name || "İsim Yok"}
           />
           <InfoCard
-            name={stream.name}
+            name={stream?.name || "İsim Yok"}
             hostIdentity={user.id}
             viewerIdentity={identity}
           />
@@ -75,9 +81,9 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
             hostName={user.username}
             hostIdentity={user.id}
             isFollowing={true}
-            isChatEnabled={stream.isChatEnabled}
-            isChatDelayed={stream.isChatDelayed}
-            isChatFollowersOnly={stream.isChatFolloweOnly}
+            isChatEnabled={stream?.isChatEnabled}
+            isChatDelayed={stream?.isChatDelayed}
+            isChatFollowersOnly={stream?.isChatFolloweOnly}
           />
         </div>
       </LiveKitRoom>

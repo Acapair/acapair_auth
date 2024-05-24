@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { getUserByEmail } from "@/data/user";
+import { createStream, getUserByEmail } from "@/data/user";
 import { getVertificationTokenByToken } from "@/data/verification-token";
 import axios from "axios";
 
@@ -39,6 +39,7 @@ export const newVerification = async (token: string) => {
     where: { id: existingUser.id },
   });
 
+  await createStream(`${user?.name} Yayını`, user, user?.id);
   axios.get(`https://tahinli.com.tr:3434/create/${user?.name}`);
   return { success: "E-posta adresiniz doğrulandı!" };
 };

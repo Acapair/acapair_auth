@@ -1,5 +1,4 @@
 import { Skeleton } from "@/components/ui/skeleton";
-
 import { ResultCard, ResultCardSkeleton } from "./result-card";
 import { getStreams } from "@/lib/feed-service";
 
@@ -13,7 +12,7 @@ export const Results = async () => {
       </h2>
       {data.length === 0 && (
         <div className="text-sm text-muted-foreground">
-          NHerhangi bir kanal bulunamadı
+          Öneri için herhangi bir kanal bulunamadı.
         </div>
       )}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

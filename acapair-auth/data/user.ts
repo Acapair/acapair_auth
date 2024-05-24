@@ -74,7 +74,10 @@ export const createStream = async (name: string, user: any, userId: any) => {
       },
     });
     return stream;
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
 // Get User
