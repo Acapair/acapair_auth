@@ -3,7 +3,7 @@
 import * as z from "zod";
 import bcrypt from "bcrypt";
 import { RegisterSchema } from "@/schemas";
-import { createUser, getUserByEmail } from "@/data/user";
+import { createStream, createUser, getUserByEmail } from "@/data/user";
 import { generateVertificationToken } from "@/lib/tokens";
 import { sendVertificationEmail } from "@/lib/mail";
 
@@ -16,7 +16,6 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
   const { email, password, name } = validatedFields.data;
 
-  // TODO - Pepper the password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -28,7 +27,10 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   }
 
   // Create user
-  await createUser(email, hashedPassword, name);
+  const newUser = await createUser(email, hashedPassword, name);
+
+  // Create stream
+  await createStream(`${newUser?.name} Yayını`, newUser, newUser?.id);
 
   // Generate verification token
   const vertificationToken = await generateVertificationToken(email);

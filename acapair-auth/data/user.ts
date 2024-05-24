@@ -13,7 +13,6 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
-
 // Get user by username
 export const getUserByUsername = async (name: string) => {
   try {
@@ -62,6 +61,20 @@ export const createUser = async (
     console.error(error);
     return null;
   }
+};
+
+// Create Stream
+export const createStream = async (name: string, user: any, userId: any) => {
+  try {
+    const stream = await db.stream.create({
+      data: {
+        name,
+        userId,
+        user,
+      },
+    });
+    return stream;
+  } catch (error) {}
 };
 
 // Get User
