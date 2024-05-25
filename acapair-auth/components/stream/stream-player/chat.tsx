@@ -44,20 +44,22 @@ export const Chat = ({
   const isHidden = !isChatEnabled || !isOnline;
 
   const [value, setValue] = useState("");
-  const { chatMessages: messages, send } = useChat();
+  const { chatMessages: messages, send, isSending } = useChat();
 
   useEffect(() => {
     if (matches) onExpand();
   }, [matches, onExpand]);
 
   const reversedMessages = useMemo(() => {
-    return messages.sort((a, b) => b.timestamp - a.timestamp);
+    return [...messages].sort((a, b) => b.timestamp - a.timestamp);
   }, [messages]);
 
   const onSubmit = () => {
+    console.log("submitting chat message");
     if (!send) return;
-
+    console.log("sending chat message");
     send(value);
+
     setValue("");
   };
 

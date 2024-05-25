@@ -28,10 +28,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   }
 
   // Create user
-  const newUser = await createUser(email, hashedPassword, name);
-
-  // Create stream
-  await createStream(`${newUser?.name} Yayını`, newUser, newUser?.id);
+  await createUser(email, hashedPassword, name);
 
   // Generate verification token
   const vertificationToken = await generateVertificationToken(email);

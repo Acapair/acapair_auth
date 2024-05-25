@@ -4,8 +4,7 @@ import { v4 } from "uuid";
 import { AccessToken } from "livekit-server-sdk";
 
 import { currentUser } from "@/lib/auth";
-import { getUserById, getUserByUsername } from "@/data/user";
-import axios from "axios";
+import { getUserById } from "@/data/user";
 
 export const createViewerToken = async (hostIdentity: string) => {
   let curUser;

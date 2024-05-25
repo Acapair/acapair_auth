@@ -34,8 +34,6 @@ const UserPage = async ({ params }: UserPageProps) => {
   if (!user || !user.stream || isBanned) {
     return <h1>Kullanıcı Bulunamadı</h1>;
   }
-
-  console.log(isBanned);
   return (
     <StreamPlayer user={user} stream={user.stream} isFollowing={isFollowing} />
   );

@@ -1,5 +1,4 @@
 import StreamPlayer from "@/components/stream/stream-player";
-import { Button } from "@/components/ui/button";
 import { getUserByUsername } from "@/data/user";
 import { currentUser } from "@/lib/auth";
 import axios from "axios";

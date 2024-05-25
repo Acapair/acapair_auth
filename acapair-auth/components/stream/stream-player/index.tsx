@@ -11,7 +11,7 @@ import { Header } from "./header";
 import { InfoCard } from "./info-card";
 import { AboutCard } from "./about-card";
 import { followerCount } from "@/lib/follower";
-import { useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 
 interface StreamPlayerProps {
   user: any;
@@ -21,23 +21,32 @@ interface StreamPlayerProps {
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
   const { collapsed } = useChatSidebar((state) => state);
-  const [follower, setFollower] = useState<number | null>(0);
+  const { token, name, identity } = useViewerToken(user.id);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const fetchFollowerCount = async () => {
+      const count = await followerCount(user.name);
+      setCount(count);
+    };
+
+    fetchFollowerCount(); // Initial fetch
+    const interval = setInterval(fetchFollowerCount, 10000);
+
+    return () => clearInterval(interval);
+  }, [user.name]);
 
   if (!user) {
     return <div className="p-3 text-white">Kullanıcı bulunamadı.</div>;
   }
 
-  //eslint-disable-next-line
-  const { token, name, identity } = useViewerToken(user.id);
-
-  const count = followerCount(user.name);
-
-  if (!token || !name || !identity)
+  if (!token || !name || !identity) {
     return (
       <div className="p-3 text-white">
         <p>Bu yayını izlemek için erişime sahip olmalısınız.</p>
       </div>
     );
+  }
 
   return (
     <>
@@ -55,7 +64,7 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
             "bg-[#374151] lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-6",
         )}
       >
-        <div className="hidden-scrollbar col-span-1 space-y-4  pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
+        <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
           <Video hostName={user.name} hostIdentity={user.id} />
           <Header
             hostName={user.name}
@@ -83,7 +92,7 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
         >
           <Chat
             viewerName={name}
-            hostName={user.username}
+            hostName={user.name}
             hostIdentity={user.id}
             isFollowing={true}
             isChatEnabled={stream?.isChatEnabled}

@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVertificationEmail = async (email: string, token: string) => {
-  const confirmLink = `https://tahinli.com.tr:3434/auth/new-vertification?token=${token}`;
+  const confirmLink = `${process.env.MAIL_PATH}/auth/new-vertification?token=${token}`;
   console.log("confirmLink", confirmLink);
 
   const info = await transporter.sendMail({
@@ -30,7 +30,7 @@ export const sendVertificationEmail = async (email: string, token: string) => {
 };
 
 export const sendPasswordResetMail = async (email: string, token: string) => {
-  const confirmLink = `https://tahinli.com.tr:3434/auth/new-password?token=${token}`;
+  const confirmLink = `${process.env.MAIL_PATH}/auth/new-password?token=${token}`;
 
   const info = await transporter.sendMail({
     from: `"Acapair 🎓" <${process.env.EMAIL_USER}>`,
