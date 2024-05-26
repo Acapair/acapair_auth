@@ -4,7 +4,7 @@ import { Results, ResultsSkeleton } from "./_components/results";
 
 export default function Page() {
   return (
-    <div className="mx-auto h-full max-w-screen-2xl p-8">
+    <div className="h-full w-full max-w-screen-2xl p-8">
       <Suspense fallback={<ResultsSkeleton />}>
         <Results />
       </Suspense>
