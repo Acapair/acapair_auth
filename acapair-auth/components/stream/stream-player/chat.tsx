@@ -14,6 +14,7 @@ import { ChatHeader } from "./chat-header";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
 import { ChatCommunity } from "./chat-community";
+import { sendMessage } from "@/actions/chat";
 
 interface ChatProps {
   hostName: string;
@@ -55,9 +56,9 @@ export const Chat = ({
   }, [messages]);
 
   const onSubmit = () => {
-    console.log("submitting chat message");
     if (!send) return;
-    console.log("sending chat message");
+
+    sendMessage(hostIdentity, viewerName, value);
     send(value);
 
     setValue("");
