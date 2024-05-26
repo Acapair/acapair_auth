@@ -1,2 +1,2 @@
-# Acapair Authentication Repository
+# Acapair Stream, Auth and More
 
