@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { cn, stringToColor } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LiveBadge } from "@/components/live-badge";
@@ -33,6 +33,7 @@ export const UserAvatar = ({
   size,
 }: UserAvatarProps) => {
   const canShowBadge = showBadge && isLive;
+  const color = stringToColor(username || "");
 
   return (
     <div className="relative ">
@@ -43,7 +44,7 @@ export const UserAvatar = ({
         )}
       >
         <AvatarImage src={imageUrl} className="object-cover" />
-        <AvatarFallback className="bg-purple-700 text-sm">
+        <AvatarFallback className="bg-gray-900" style={{ color }}>
           {username[0].toUpperCase()}
           {username[username.length - 1].toUpperCase()}
         </AvatarFallback>

@@ -3,6 +3,7 @@ import { useSidebar } from "@/store/use-sidebar";
 
 import FollowingItem from "./following-item";
 import Link from "next/link";
+import stringToColor from "string-to-color";
 
 interface FollowingProps {
   data: any;
@@ -11,6 +12,7 @@ interface FollowingProps {
 const Following = ({ data }: FollowingProps) => {
   const { collapsed } = useSidebar((state) => state);
   const showLabel = !collapsed && data.length > 0;
+  const color = stringToColor(data || "");
 
   return (
     <div>
@@ -28,9 +30,9 @@ const Following = ({ data }: FollowingProps) => {
           {data.map((item: any) => (
             <div
               key={item}
-              className="mb-1 w-full rounded-full border border-gray-100 bg-gray-800 p-3 text-center text-xs hover:bg-gray-600"
+              className="mb-1 w-full rounded-lg p-3 text-center text-sm shadow-lg"
             >
-              <Link href={`/${item}`}>
+              <Link href={`/${item}`} style={{ color }}>
                 {item[0].toUpperCase() + item[1].toUpperCase()}
               </Link>
             </div>
