@@ -10,13 +10,13 @@ export const Results = async ({ term }: ResultsProps) => {
   const data = await getSearch(term);
 
   return (
-    <div>
+    <div className="text-white">
       <h2 className="mb-4 text-lg font-semibold">
-        Results for term &quot;{term}&quot;
+        &quot;{term}&quot; için listelenen sonuçlar
       </h2>
       {data.length === 0 && (
         <p className="text-sm text-muted-foreground">
-          No results found. Try searching for something else.
+          Herhangi bir sonuç bulunamadı. Lütfen başka bir arama yapın.
         </p>
       )}
       <div className="flex flex-col gap-y-4">

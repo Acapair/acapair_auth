@@ -43,7 +43,7 @@ export const UserAvatar = ({
         )}
       >
         <AvatarImage src={imageUrl} className="object-cover" />
-        <AvatarFallback className="bg-purple-700 ">
+        <AvatarFallback className="bg-purple-700 text-sm">
           {username[0].toUpperCase()}
           {username[username.length - 1].toUpperCase()}
         </AvatarFallback>

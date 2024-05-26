@@ -5,6 +5,7 @@ import { formatDistanceToNow } from "date-fns";
 import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { VerifiedMark } from "@/components/verified-mark";
+import { tr } from "date-fns/locale";
 
 interface ResultCardProps {
   data: {
@@ -19,7 +20,7 @@ interface ResultCardProps {
 
 export const ResultCard = ({ data }: ResultCardProps) => {
   return (
-    <Link href={`/${data.user.name}`}>
+    <Link href={`/${data.user.name || ""}`}>
       <div className="flex w-full gap-x-4">
         <div className="relative h-[9rem] w-[16rem]">
           <Thumbnail
@@ -29,17 +30,18 @@ export const ResultCard = ({ data }: ResultCardProps) => {
             username={data.user.name || ""}
           />
         </div>
-        <div className="space-y-1">
+        <div className="space-y-1 ">
           <div className="flex items-center gap-x-2">
-            <p className="cursor-pointer text-lg font-bold hover:text-orange-600">
+            <p className="cursor-pointer text-lg font-bold hover:text-blue-500">
               {data.user.name}
             </p>
             <VerifiedMark />
           </div>
-          <p className="text-sm text-muted-foreground">{data.name}</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-400">{data.name}</p>
+          <p className="text-sm text-gray-400">
             {formatDistanceToNow(new Date(data.updatedAt), {
               addSuffix: true,
+              locale: tr,
             })}
           </p>
         </div>
