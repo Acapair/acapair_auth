@@ -15,7 +15,7 @@ export const Results = async ({ term }: ResultsProps) => {
         &quot;{term}&quot; için listelenen sonuçlar
       </h2>
       {data.length === 0 && (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-gray-400">
           Herhangi bir sonuç bulunamadı. Lütfen başka bir arama yapın.
         </p>
       )}
