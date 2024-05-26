@@ -7,7 +7,6 @@ export const sendMessage = async (
 ) => {
   let headersList = {
     Accept: "/",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
     "Content-Type": "application/json",
   };
 
@@ -28,23 +27,11 @@ export const sendMessage = async (
 };
 
 export const getMessage = async (room_id: string) => {
-  let headersList = {
-    Accept: "/",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    "Content-Type": "application/json",
+  let reqOptions = {
+    url: "https://tahinli.com.tr:2334/receive/" + room_id,
+    method: "GET",
   };
 
-  let bodyContent = JSON.stringify({
-    room_id: room_id,
-  });
-
-  let response = await fetch("https://tahinli.com.tr:2334/receive", {
-    method: "GET",
-    body: bodyContent,
-    headers: headersList,
-  });
-
-  let data = await response.text();
-  console.log("Message Received!");
-  return data;
+  let response = await axios.request(reqOptions);
+  return response.data.messages;
 };

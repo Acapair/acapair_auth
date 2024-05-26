@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { ConnectionState } from "livekit-client";
 import { useMediaQuery } from "usehooks-ts";
 import {
-  useChat,
   useConnectionState,
   useRemoteParticipant,
 } from "@livekit/components-react";
@@ -14,7 +13,7 @@ import { ChatHeader } from "./chat-header";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
 import { ChatCommunity } from "./chat-community";
-import { sendMessage } from "@/actions/chat";
+import { getMessage, sendMessage } from "@/actions/chat";
 
 interface ChatProps {
   hostName: string;
@@ -45,22 +44,30 @@ export const Chat = ({
   const isHidden = !isChatEnabled || !isOnline;
 
   const [value, setValue] = useState("");
-  const { chatMessages: messages, send, isSending } = useChat();
+  const [messages, setMessages] = useState({});
 
   useEffect(() => {
     if (matches) onExpand();
   }, [matches, onExpand]);
 
-  const reversedMessages = useMemo(() => {
-    return [...messages].sort((a, b) => b.timestamp - a.timestamp);
-  }, [messages]);
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const data = await getMessage(hostIdentity);
+        setMessages(data);
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+    const intervalId = setInterval(fetchMessages, 1000);
+    fetchMessages();
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [hostIdentity]);
 
   const onSubmit = () => {
-    if (!send) return;
-
     sendMessage(hostIdentity, viewerName, value);
-    send(value);
-
     setValue("");
   };
 
@@ -73,7 +80,7 @@ export const Chat = ({
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
-          <ChatList messages={reversedMessages} isHidden={isHidden} />
+          <ChatList messages={messages} isHidden={isHidden} />
           <ChatForm
             onSubmit={onSubmit}
             value={value}

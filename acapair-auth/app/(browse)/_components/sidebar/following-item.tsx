@@ -6,7 +6,6 @@ interface FollowingItemProps {
 }
 
 const FollowingItem = ({ data }: FollowingItemProps) => {
-  console.log(data);
   return (
     <Link
       href={`/${data}`}

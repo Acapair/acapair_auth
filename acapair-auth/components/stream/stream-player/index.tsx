@@ -63,18 +63,6 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
           collapsed &&
             "bg-[#374151] lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-6",
         )}
-        roomOptions={{
-          adaptiveStream: true,
-          dynacast: true,
-          publishDefaults: {
-            simulcast: true,
-          },
-          audioCaptureDefaults: {
-            autoGainControl: true,
-            echoCancellation: true,
-            noiseSuppression: true,
-          },
-        }}
       >
         <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 md:col-span-2 lg:overflow-y-auto xl:col-span-5 2xl:col-span-7">
           <Video hostName={user.name} hostIdentity={user.id} />
