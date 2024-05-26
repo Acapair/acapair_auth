@@ -18,7 +18,7 @@ interface ResultCardProps {
 
 export const ResultCard = ({ data }: ResultCardProps) => {
   return (
-    <Link href={`/${data.user.name}`}>
+    <Link href={`/${data.user.name}`} className="pb-3">
       <div className="h-full w-full space-y-4 text-white">
         <Thumbnail
           src={data.thumbnailUrl}
@@ -27,11 +27,7 @@ export const ResultCard = ({ data }: ResultCardProps) => {
           username={data.user.name || ""}
         />
         <div className="flex gap-x-3">
-          <UserAvatar
-            username={data.user.name || ""}
-            imageUrl={""}
-            isLive={data.isLive}
-          />
+          <UserAvatar username={data.user.name || ""} imageUrl={""} />
           <div className="flex flex-col overflow-hidden text-sm">
             <p className="truncate font-semibold hover:text-blue-500">
               {data.name}

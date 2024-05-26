@@ -17,7 +17,6 @@ const SearchBar = () => {
   const handleClick = () => {
     startTransition(() => {
       searchUser(search).then((data) => {
-        console.log(data);
         setUser(data);
       });
       setSearch("");
