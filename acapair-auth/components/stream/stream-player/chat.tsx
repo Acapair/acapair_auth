@@ -69,7 +69,7 @@ export const Chat = ({
   };
 
   return (
-    <div className="flex h-[calc(100vh-80px)] w-full flex-col border-b border-l bg-[#21292a] pt-0 text-white">
+    <div className="flex h-[calc(100vh-80px)] w-full flex-col border-b border-l border-gray-500 bg-[#21292a] pt-0 text-white">
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>

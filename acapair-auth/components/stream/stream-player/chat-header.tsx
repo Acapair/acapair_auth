@@ -6,7 +6,7 @@ import { ChatToggle } from "./chat-toggle";
 
 export const ChatHeader = () => {
   return (
-    <div className="relative border-b p-3">
+    <div className="relative border-b border-gray-500 p-3">
       <div className="absolute left-2 top-2 hidden lg:block">
         <ChatToggle />
       </div>
