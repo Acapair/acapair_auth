@@ -15,15 +15,13 @@ export default function Home() {
       <div className="space-y-6 text-center">
         <h1
           className={cn(
-            "text-6xl font-semibold text-white drop-shadow-md",
+            "pb-10 pr-20 text-6xl font-semibold text-white drop-shadow-md",
             font.className,
           )}
         >
           🎓 Acapair
         </h1>
-        <p className="text-lg text-white">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </p>
+
         <div>
           <LoginButton>
             <Button
