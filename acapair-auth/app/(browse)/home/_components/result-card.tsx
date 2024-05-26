@@ -36,8 +36,8 @@ export const ResultCard = ({ data }: ResultCardProps) => {
             <p className="truncate font-semibold hover:text-blue-500">
               {data.name}
             </p>
-            <div className="flex text-gray-400 ">
-              <p className="pr-1">{data.user.name}</p>
+            <div className="flex text-gray-400">
+              {data.user.name}
               <div className="pl-1 pt-1">
                 <VerifiedMark />
               </div>
