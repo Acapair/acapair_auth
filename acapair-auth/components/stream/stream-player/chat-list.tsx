@@ -1,7 +1,5 @@
 "use client";
 
-import { ReceivedChatMessage } from "@livekit/components-react";
-
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { ChatMessage } from "./chat-message";
@@ -24,9 +22,11 @@ export const ChatList = ({ messages, isHidden }: ChatListProps) => {
 
   return (
     <div className="flex h-full flex-1 flex-col-reverse overflow-y-auto p-3">
-      {[...messages].reverse().map((m: any) => (
-        <ChatMessage key={m.hash} data={m} />
-      ))}
+      {[...(Array.isArray(messages) ? messages : [])]
+        .reverse()
+        .map((m: any) => (
+          <ChatMessage key={m.hash} data={m} />
+        ))}
     </div>
   );
 };
