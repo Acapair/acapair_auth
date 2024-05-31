@@ -43,6 +43,6 @@ export const newVerification = async (token: string) => {
     return { error: "Kullanıcı bulunamadı." };
   }
 
-  axios.get(`https://tahinli.com.tr:3434/create/${user?.name}`);
+  axios.post(`https://tahinli.com.tr:3434/${user?.name}`);
   return { success: "E-posta adresiniz doğrulandı!" };
 };

@@ -20,7 +20,7 @@ export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
     startTransition(async () => {
       if (!following) {
         await axios
-          .get(
+          .patch(
             `https://tahinli.com.tr:3434/follow/${curUser.name}/${user.name}`,
           )
           .then(() => {
@@ -32,7 +32,7 @@ export const Actions = ({ isFollowing, user, curUser }: ActionsProps) => {
           });
       } else {
         await axios
-          .get(
+          .patch(
             `https://tahinli.com.tr:3434/unfollow/${curUser.name}/${user.name}`,
           )
           .then(() => {

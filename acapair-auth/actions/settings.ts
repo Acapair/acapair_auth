@@ -26,8 +26,8 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
     data: { ...values },
   });
 
-  axios.get(
-    `https://tahinli.com.tr:3434/change-username/${dbUser.name}/${values.email}`,
+  axios.patch(
+    `https://tahinli.com.tr:3434/username/${dbUser.name}/${values.email}`,
   );
 
   return { success: "Ayarlar güncellendi." };

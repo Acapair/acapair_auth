@@ -24,7 +24,7 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
       if (!following) {
         console.log(user);
         await axios
-          .get(
+          .patch(
             //@ts-ignore
             `https://tahinli.com.tr:3434/follow/${decodeURI(curUser?.name || "")}/${decodeURI(user || "")}`,
           )
@@ -39,7 +39,7 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
         const user = await getUser(hostIdentity).then((res) => res?.name);
 
         await axios
-          .get(
+          .patch(
             //@ts-ignore
             `https://tahinli.com.tr:3434/unfollow/${decodeURI(curUser?.name || "")}/${decodeURI(user || "")}`,
           )

@@ -20,7 +20,7 @@ export const Block = ({ isBanned, user, curUser }: BlockProps) => {
     startTransition(async () => {
       if (!banned) {
         await axios
-          .get(`https://tahinli.com.tr:3434/ban/${user.name}/${curUser.name}`)
+          .patch(`https://tahinli.com.tr:3434/ban/${user.name}/${curUser.name}`)
           .then(() => {
             toast.success("Kullanıcı engellendi.");
             setBanned(true);
@@ -30,7 +30,9 @@ export const Block = ({ isBanned, user, curUser }: BlockProps) => {
           });
       } else {
         await axios
-          .get(`https://tahinli.com.tr:3434/unban/${user.name}/${curUser.name}`)
+          .patch(
+            `https://tahinli.com.tr:3434/unban/${user.name}/${curUser.name}`,
+          )
           .then(() => {
             toast.success("Engel kaldırıldı.");
             setBanned(false);
