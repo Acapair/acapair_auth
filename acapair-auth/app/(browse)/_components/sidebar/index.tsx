@@ -8,9 +8,7 @@ export const Sidebar = async () => {
   const curUser = await currentUser();
 
   const data = await axios
-    .get(
-      `https://tahinli.com.tr:3434/username/${decodeURI(curUser?.name || "")}`,
-    )
+    .get(`https://tahinli.com.tr:3434/${decodeURI(curUser?.name || "")}`)
     .then((res) => {
       return res.data.channel.followed_list;
     })
@@ -22,7 +20,7 @@ export const Sidebar = async () => {
   const usernames = await Promise.all(
     data.map(async (item: any) => {
       const response = await axios.get(
-        `https://tahinli.com.tr:3434/search-id/${item.String}`,
+        `https://tahinli.com.tr:3434/id/${item.String}`,
       );
       return response.data.channel.username;
     }),
