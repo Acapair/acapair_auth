@@ -29,7 +29,7 @@ export const {
       //@ts-ignore
       if (existingUser?.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
-          existingUser.id
+          existingUser.id,
         );
 
         if (!twoFactorConfirmation) return false;
@@ -41,10 +41,6 @@ export const {
       // Token "sub" equals to user id
       if (token.sub && session.user) {
         session.user.id = token.sub;
-      }
-
-      if (token.role && session.user) {
-        session.user.role = token.role;
       }
 
       if (session.user) {
