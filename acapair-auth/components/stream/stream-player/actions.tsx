@@ -22,7 +22,6 @@ export const Actions = ({ isFollowing, hostIdentity }: ActionsProps) => {
     startTransition(async () => {
       const user = await getUser(hostIdentity).then((res) => res?.name);
       if (!following) {
-        console.log(user);
         await axios
           .patch(
             //@ts-ignore

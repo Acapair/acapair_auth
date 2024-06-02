@@ -23,7 +23,6 @@ export const sendMessage = async (
   });
 
   let data = await response.text();
-  console.log("Tahinli: Message Sent!");
 };
 
 export const getMessage = async (room_id: string) => {
