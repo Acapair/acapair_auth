@@ -42,6 +42,7 @@ export const Search = () => {
         onChange={(e) => setValue(e.target.value)}
         placeholder="Arama yapın..."
         className="rounded-r-none border border-slate-500 bg-[#252731] text-white hover:bg-slate-800 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+        id="search"
       />
       {value && (
         <X
