@@ -79,25 +79,7 @@ export const createIngress = async (ingressType: IngressInput) => {
     };
   }
 
-  //@ts-ignore
-  async function createIngressWithRetry(ingressType, options, attempt = 0) {
-    try {
-      const ingress = await ingressClient.createIngress(ingressType, options);
-      return ingress;
-    } catch (error) {
-      //@ts-ignore
-      if (error.status === 429 && attempt < 5) {
-        await new Promise((resolve) =>
-          setTimeout(resolve, Math.pow(2, attempt) * 100),
-        );
-        return createIngressWithRetry(ingressType, options, attempt + 1);
-      } else {
-        throw error;
-      }
-    }
-  }
-
-  const ingress = await createIngressWithRetry(ingressType, options);
+  const ingress = await ingressClient.createIngress(ingressType, options);
 
   if (!ingress || !ingress.url || !ingress.streamKey) {
     throw new Error("Ingress creation failed");
@@ -112,6 +94,6 @@ export const createIngress = async (ingressType: IngressInput) => {
     },
   });
 
-  revalidatePath(`/u/${decodeURI(self?.name || "")}/keys` || "/");
+  revalidatePath(`/u/${self?.name}/keys` || "/");
   return ingress;
 };
