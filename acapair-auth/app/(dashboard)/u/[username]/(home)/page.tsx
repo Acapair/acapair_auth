@@ -15,12 +15,18 @@ const CreatorPage = async ({ params }: CreatorPageProps) => {
   if (!curUser) {
     redirect("/login");
   }
-  //@ts-ignore
+
   const user = await getUserByUsername(decodeURI(params.username));
 
-  const isFollowing = axios.get(
-    `https://tahinli.com.tr:3434/is-follower/${curUser?.name}/${user?.name}`,
-  );
+  const curUserName = encodeURIComponent(curUser?.name || "");
+  const userName = encodeURIComponent(user?.name || "");
+
+  const isFollowing = axios
+    .get(`https://tahinli.com.tr:3434/is-follower/${curUserName}/${userName}`)
+    .then((response) => {
+      return response.data.is_follower;
+    })
+    .catch((error) => console.error(error));
 
   return (
     <div className="h-full">
