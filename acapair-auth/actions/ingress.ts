@@ -73,7 +73,7 @@ export const createIngress = async (ingressType: IngressInput) => {
         source: TrackSource.SCREEN_SHARE,
         encodingOptions: {
           case: "preset",
-          value: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
+          value: IngressVideoEncodingPreset.H264_1080P_30FPS_1_LAYER,
         },
       }),
     };
