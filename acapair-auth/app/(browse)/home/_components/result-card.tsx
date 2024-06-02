@@ -9,7 +9,7 @@ import { VerifiedMark } from "@/components/verified-mark";
 
 interface ResultCardProps {
   data: {
-    user: User;
+    user: any;
     isLive: boolean;
     name: string;
     thumbnailUrl: string | null;

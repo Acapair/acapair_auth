@@ -1,6 +1,7 @@
 import { $Enums } from "@prisma/client";
 import { currentUser } from "./auth";
 import { db } from "./db";
+import axios from "axios";
 
 export const getStreams = async () => {
   const curUsr = await currentUser();
