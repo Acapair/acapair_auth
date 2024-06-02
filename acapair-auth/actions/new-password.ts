@@ -9,7 +9,7 @@ import { updatePassword, deletePasswordResetToken } from "@/data/password";
 
 export const newPassword = async (
   values: z.infer<typeof NewPasswordSchema>,
-  token?: string | null
+  token?: string | null,
 ) => {
   if (!token) return { error: "Geçersiz token." };
 
