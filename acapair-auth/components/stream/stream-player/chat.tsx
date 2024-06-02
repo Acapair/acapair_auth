@@ -51,20 +51,22 @@ export const Chat = ({
   }, [matches, onExpand]);
 
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const data = await getMessage(hostIdentity);
-        setMessages(data);
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      }
-    };
-    const intervalId = setInterval(fetchMessages, 1000);
-    fetchMessages();
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [hostIdentity]);
+    if (!isHidden) {
+      const fetchMessages = async () => {
+        try {
+          const data = await getMessage(hostIdentity);
+          setMessages(data);
+        } catch (error) {
+          console.error("Error fetching messages:", error);
+        }
+      };
+      const intervalId = setInterval(fetchMessages, 1000);
+      fetchMessages();
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [hostIdentity, isHidden]);
 
   const onSubmit = () => {
     sendMessage(hostIdentity, viewerName, value);

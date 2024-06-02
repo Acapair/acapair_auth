@@ -21,8 +21,6 @@ export const sendMessage = async (
     body: bodyContent,
     headers: headersList,
   });
-
-  let data = await response.text();
 };
 
 export const getMessage = async (room_id: string) => {

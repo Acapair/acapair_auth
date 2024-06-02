@@ -20,7 +20,7 @@ const KeysPage = async () => {
   return (
     <div className="p-6 text-white">
       <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Anahtarlar ve URLs</h1>
+        <h1 className="text-2xl font-bold">Anahtarlar ve URL</h1>
         <ConnectModal />
       </div>
       <div className="space-y-4">

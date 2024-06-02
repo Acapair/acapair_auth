@@ -19,7 +19,7 @@ export const ChatInfo = ({ isDelayed, isFollowersOnly }: ChatInfoProps) => {
     }
 
     if (isDelayed && isFollowersOnly) {
-      return "Sadec takipçiler sohbet edebilir ve mesajlar 3 saniye gecikmeli gönderilir";
+      return "Sadece takipçiler sohbet edebilir ve mesajlar 3 saniye gecikmeli gönderilir";
     }
 
     return "";

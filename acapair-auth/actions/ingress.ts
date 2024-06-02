@@ -42,7 +42,6 @@ export const resetIngresses = async (hostIdentity: string) => {
   }
 };
 
-// creates a new ingress and sends the data to our mysql db
 export const createIngress = async (ingressType: IngressInput) => {
   const self = await currentUser();
 
@@ -80,7 +79,25 @@ export const createIngress = async (ingressType: IngressInput) => {
     };
   }
 
-  const ingress = await ingressClient.createIngress(ingressType, options);
+  //@ts-ignore
+  async function createIngressWithRetry(ingressType, options, attempt = 0) {
+    try {
+      const ingress = await ingressClient.createIngress(ingressType, options);
+      return ingress;
+    } catch (error) {
+      //@ts-ignore
+      if (error.status === 429 && attempt < 5) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, Math.pow(2, attempt) * 100),
+        );
+        return createIngressWithRetry(ingressType, options, attempt + 1);
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  const ingress = await createIngressWithRetry(ingressType, options);
 
   if (!ingress || !ingress.url || !ingress.streamKey) {
     throw new Error("Ingress creation failed");
@@ -95,6 +112,6 @@ export const createIngress = async (ingressType: IngressInput) => {
     },
   });
 
-  revalidatePath(`/u/${self?.name}/keys` || "/");
+  revalidatePath(`/u/${decodeURI(self?.name || "")}/keys` || "/");
   return ingress;
 };
