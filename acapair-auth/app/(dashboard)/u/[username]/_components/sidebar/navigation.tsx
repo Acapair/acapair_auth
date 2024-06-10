@@ -24,11 +24,6 @@ const Navigation = () => {
       href: `/u/${user?.name}/chat`,
       icon: MessageSquare,
     },
-    {
-      label: "Topluluk",
-      href: `/u/${user?.name}/community`,
-      icon: Users,
-    },
   ];
 
   if (!user?.name) {

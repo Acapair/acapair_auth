@@ -30,10 +30,10 @@ const Following = ({ data }: FollowingProps) => {
           {data.map((item: any) => (
             <div
               key={item}
-              className="mb-1 w-full rounded-lg p-3 text-center text-sm shadow-lg"
+              className="w-full rounded-lg bg-gray-700 p-3 text-center text-sm shadow-lg  hover:bg-slate-500"
             >
               <Link href={`/${item}`} style={{ color }}>
-                {item[0].toUpperCase() + item[1].toUpperCase()}
+                {item[0].toUpperCase() + item[item.length - 1].toUpperCase()}
               </Link>
             </div>
           ))}

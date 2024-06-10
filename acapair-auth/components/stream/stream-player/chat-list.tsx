@@ -21,7 +21,7 @@ export const ChatList = ({ messages, isHidden }: ChatListProps) => {
   }
 
   return (
-    <div className="flex h-full flex-1 flex-col-reverse overflow-y-auto p-3">
+    <div className="flex h-full flex-1 flex-col-reverse p-3">
       {[...(Array.isArray(messages) ? messages : [])]
         .reverse()
         .map((m: any) => (

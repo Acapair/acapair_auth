@@ -35,13 +35,13 @@ export const Search = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="relative flex w-full items-center lg:w-[400px]"
+      className="relative flex w-full items-center pl-5 sm:w-[200px] md:w-[300px] lg:w-[400px] xl:w-[500px]"
     >
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Arama yapın..."
-        className="rounded-r-none border border-slate-500 bg-[#252731] text-white hover:bg-slate-800 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+        className="border-1 rounded-r-none border border-slate-500 bg-[#252731] text-white hover:bg-slate-900 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
         id="search"
       />
       {value && (
@@ -53,9 +53,9 @@ export const Search = () => {
       <Button
         type="submit"
         size="icon"
-        className="rounded-l-none bg-[#252731] hover:bg-[#3a3d4a]"
+        className="rounded-l-none bg-[#252731] hover:bg-slate-900"
       >
-        <SearchIcon className="h-5 w-5 text-muted-foreground" />
+        <SearchIcon className="h-5 w-5 text-muted-foreground " />
       </Button>
     </form>
   );

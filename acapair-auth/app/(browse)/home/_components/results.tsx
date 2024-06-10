@@ -13,7 +13,9 @@ export const Results = async () => {
           Öne Çıkan Canlı Yayınlar
         </h2>
         {data.length === 0 && (
-          <div className="text-sm text-muted-foreground">No streams found.</div>
+          <div className="text-sm text-muted-foreground">
+            Herhangi bir yayın bulunamadı.
+          </div>
         )}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {data.map((result) => (

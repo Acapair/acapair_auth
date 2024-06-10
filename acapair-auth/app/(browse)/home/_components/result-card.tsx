@@ -1,9 +1,7 @@
+"use client";
 import Link from "next/link";
-import { Stream, User } from "@prisma/client";
-
 import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
-import { LiveBadge } from "@/components/live-badge";
 import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
 import { VerifiedMark } from "@/components/verified-mark";
 
@@ -19,15 +17,19 @@ interface ResultCardProps {
 export const ResultCard = ({ data }: ResultCardProps) => {
   return (
     <Link href={`/${data.user.name}`} className="pb-3">
-      <div className="h-full w-full space-y-4 text-white">
+      <div className="h-96 w-96 space-y-4 text-white">
         <Thumbnail
           src={data.thumbnailUrl}
           fallback={""}
-          isLive={data.isLive}
+          isLive={data.isLive || false}
           username={data.user.name || ""}
         />
         <div className="flex gap-x-3">
-          <UserAvatar username={data.user.name || ""} imageUrl={""} />
+          <UserAvatar
+            username={data.user.name || ""}
+            imageUrl={""}
+            isLive={data.isLive || false}
+          />
           <div className="flex flex-col overflow-hidden text-sm">
             <p className="truncate font-semibold hover:text-blue-500">
               {data.name}
