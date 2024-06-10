@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { getUserById } from "@/data/user";
 
 export const currentUser = async () => {
   const session = await auth();
@@ -8,6 +9,7 @@ export const currentUser = async () => {
 
 export const currentRole = async () => {
   const session = await auth();
+  const user = await getUserById(session?.user?.id || "");
 
-  return session?.user?.role;
+  return user?.role;
 };

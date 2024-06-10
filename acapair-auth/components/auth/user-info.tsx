@@ -1,7 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface UserInfoProps {
   user?: any;
@@ -9,8 +8,6 @@ interface UserInfoProps {
 }
 
 const UserInfo = ({ user, label }: UserInfoProps) => {
-  const currentUser = useCurrentUser();
-
   return (
     <Card className="w-[680px] shadow-md">
       <CardHeader>

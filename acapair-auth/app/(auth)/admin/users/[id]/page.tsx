@@ -11,7 +11,7 @@ export default async function UserPage({
   const role: "ADMIN" | "USER" | undefined = await currentRole();
   if (role !== "ADMIN") {
     return (
-      <div className="text-white text-xl text-bold mt-5">
+      <div className="text-bold mt-5 text-xl text-white">
         Erişim izniniz yok.
       </div>
     );
@@ -30,20 +30,24 @@ export default async function UserPage({
         //@ts-ignore
         <div>
           <UserInfo user={user} label={"Kullanıcı Bilgisi"} />
-          <div className="w-[680px] mt-3">
-            <h1 className="text-red-200 text-semibold text-lg shadow-sm p-1">
+          <div className="mt-3 w-[680px]">
+            <h1 className="text-semibold p-1 text-lg text-red-200 shadow-sm">
               Tehlikeli Alan
             </h1>
-            <div className="border border-red-600 rounded-xl  p-1">
+            <div className="rounded-xl border border-red-600  p-1">
               {role === "ADMIN" &&
                 (user?.role === "ADMIN" ? (
-                  <p className="text-sm text-center text-white">
+                  <p className="text-center text-sm text-white">
                     Yönetici hesapları silinemez.
                   </p>
                 ) : (
-                  <Button variant="danger" className="w-full">
-                    Kullanıcıyı Sil
-                  </Button>
+                  <p className="text-center text-sm text-white">
+                    Hesabı silmek için iletişime geçin.
+                    <br />
+                    <span className="text-blue-300">
+                      acapair@acapair.com.tr
+                    </span>
+                  </p>
                 ))}
             </div>
           </div>
