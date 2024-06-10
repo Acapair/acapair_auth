@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ConnectionState } from "livekit-client";
 import { useMediaQuery } from "usehooks-ts";
 import {
@@ -12,7 +12,6 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 import { ChatHeader } from "./chat-header";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
-import { ChatCommunity } from "./chat-community";
 import { getMessage, sendMessage } from "@/actions/chat";
 
 interface ChatProps {
@@ -57,7 +56,7 @@ export const Chat = ({
           const data = await getMessage(hostIdentity);
           setMessages(data);
         } catch (error) {
-          console.error("Error fetching messages:", error);
+          console.error("Mesajlar getirilemedi.", error);
         }
       };
       const intervalId = setInterval(fetchMessages, 1000);
@@ -93,13 +92,6 @@ export const Chat = ({
             isFollowing={isFollowing}
           />
         </>
-      )}
-      {variant === ChatVariant.COMMUNITY && (
-        <ChatCommunity
-          viewerName={viewerName}
-          hostName={hostName}
-          isHidden={isHidden}
-        />
       )}
     </div>
   );
