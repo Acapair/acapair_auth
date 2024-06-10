@@ -17,7 +17,7 @@ interface ResultCardProps {
 export const ResultCard = ({ data }: ResultCardProps) => {
   return (
     <Link href={`/${data.user.name}`} className="pb-3">
-      <div className="h-96 w-96 space-y-4 text-white">
+      <div className="space-y-10 text-white sm:h-80 sm:w-80  md:h-96 md:w-96">
         <Thumbnail
           src={data.thumbnailUrl}
           fallback={""}
